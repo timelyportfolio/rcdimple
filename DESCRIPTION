@@ -1,0 +1,24 @@
+Package: rcdimple
+Title: Dimple htmlwidget
+Version: 0.1
+Authors@R: c(
+    person("John", "Kiernander", role = c("aut", "cph"), comment = "dimple.js
+      library in htmlwidgets/lib, https://github.com/PMSI-AlignAlytics/dimple"),
+    person("Mike", "Bostock", role = c("aut", "cph"), comment = "d3.js
+      library in htmlwidgets/lib, http://d3js.org"),
+    person("Jeremy", "Stucki", role = c("aut", "cph"), comment = "d3-grid
+      library in htmlwidgets/lib, http://github.com/cpettitt/dagre-d3"),
+    person("Kenton", "Russell", role = c("aut", "cre"), comment = "R
+      interface", email = "kent.russell@timelyportfolio.com"),
+    person("Ramnath", "Vaidyanathan", role = c("aut","ctb"), comment = "rCharts
+      common interace functions", email = "ramnath.vaidya@gmail.com")
+  )
+Maintainer: Kenton Russell <kent.russell@timelyportfolio.com>
+Description: Provides easy access to the dimple d3.js plotting library in the form
+                of an htmlwidget.
+Depends: R (>= 3.1.2)
+License: MIT + file LICENSE
+LazyData: true
+Suggests: knitr,
+    testthat
+VignetteBuilder: knitr
