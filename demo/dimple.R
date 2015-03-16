@@ -6,9 +6,6 @@ ex_data <- read.delim(
   "http://pmsi-alignalytics.github.io/dimple/data/example_data.tsv"
 )
 
-# original data is ~ 1000 rows, which is too huge as demo.
-set.seed(42)
-ex_data <- ex_data[sample(nrow(ex_data), 400), ]
 
 #eliminate . to avoid confusion in javascript
 colnames(ex_data) <- gsub("[.]","", colnames(ex_data))
@@ -17,7 +14,7 @@ colnames(ex_data) <- gsub("[.]","", colnames(ex_data))
 ex_data %>%
   dimple(x ="Month", y = "UnitSales", type = "bar") %>%
   xAxis(orderRule = "Date") %>%
-  add_title( html = "<h4>Unit Sales by Month for Fictional Store</h4>" )
+  addTitle( html = "<h4>Unit Sales by Month for Fictional Store</h4>" )
 
 ..p.() # ================================
 
@@ -28,8 +25,8 @@ ex_data %>%
   ) %>%
   setBounds( x = 60, y = 30, width = 510, height = 290 ) %>% 
   xAxis(orderRule = "Date") %>%
-  add_legend(  ) %>%
-  add_title( text = "Unit Sales each Month by Channel" )
+  addLegend(  ) %>%
+  addTitle( text = "Unit Sales each Month by Channel" )
 
 ..p.()# ================================
 ## example 3 vt stacked bar 100%
@@ -39,7 +36,7 @@ dimple( x ="Month", y = "UnitSales", groups = "Channel",
   setBounds(65, 30, 505, 305) %>% 
   xAxis( orderRule = "Date" ) %>%
   yAxis( type = "addPctAxis" ) %>%
-  add_legend( x = 60, y = 10, width = 510, height = 20,
+  addLegend( x = 60, y = 10, width = 510, height = 20,
     horizontalAlign = "right"
   )
 
@@ -50,7 +47,7 @@ ex_data %>%
     x = c("PriceTier","Channel"), y = "UnitSales",
     groups = "Channel", type = "bar", width = 590, height = 400
   ) %>%
-  add_legend( x = 60, y = 10, width = 520, height = 20,
+  addLegend( x = 60, y = 10, width = 520, height = 20,
     horizontalAlign = "left"
   ) %>%
   defaultColors( rainbow(4) )
@@ -65,7 +62,7 @@ dimple(
   data = ex_data,
   type = "bar"
 ) %>%
-  add_legend(
+  addLegend(
     x = "60%", width = "30%", y = "10%", height = 50 
   )
 
@@ -78,7 +75,7 @@ dimple(
   data = ex_data,
   type = "bar"
 ) %>%
-  add_legend(
+  addLegend(
     x = "30%",
     width = "60%",
     height = 20,
@@ -109,7 +106,7 @@ dimple(
   xAxis(type = "addMeasureAxis") %>%
   #good test of orderRule on y instead of x
   yAxis(type = "addCategoryAxis", orderRule = "Date") %>%
-  add_legend(
+  addLegend(
     x = 200,
     y = 10,
     width = 400,
@@ -128,7 +125,7 @@ dimple(
   xAxis(type = "addMeasureAxis") %>%
   #good test of orderRule on y instead of x
   yAxis(type = "addCategoryAxis", orderRule = "Date") %>%
-  add_legend(
+  addLegend(
     x = 200,
     y = 10,
     width = 400,
@@ -150,7 +147,7 @@ dimple(
 ) %>% 
   xAxis(type = "addMeasureAxis", outputFormat = ',.0f') %>%
   yAxis(type = "addCategoryAxis") %>%
-  add_legend()
+  addLegend()
 
 
 ..p.()# ================================
@@ -164,7 +161,7 @@ dimple(
 ) %>%
   xAxis(type = "addMeasureAxis") %>%
   yAxis(type = "addCategoryAxis") %>%
-  add_legend()
+  addLegend()
 
 ..p.()# ================================
 #example 12 horizontal 100% grouped bar
@@ -177,8 +174,8 @@ dimple(
 ) %>%
   xAxis(type = "addPctAxis") %>%
   yAxis(type = "addCategoryAxis") %>%
-  add_legend( ) %>%
-  add_title( html = "
+  addLegend( ) %>%
+  addTitle( html = "
    <h3 style = 'margin-top:0;margin-bottom:0;'>
       Sales by Price Tier and Channel
     </h3>
@@ -198,7 +195,7 @@ dimple(
 ) %>%
   xAxis(type = "addAxis", measure = "UnitSales", showPercent = TRUE) %>%
   yAxis(type = "addPctAxis") %>%
-  add_legend()
+  addLegend()
 
 
 ..p.()# ================================
@@ -211,7 +208,7 @@ dimple(
 ) %>%
   yAxis(type = "addAxis", measure = "UnitSales", showPercent = TRUE) %>%
   xAxis(type = "addPctAxis") %>%
-  add_legend( x = "30%", width = "60%")
+  addLegend( x = "30%", width = "60%")
 
 
 ..p.()# ================================
@@ -225,7 +222,7 @@ dimple(
 ) %>%
   yAxis(type = "addCategoryAxis") %>%
   xAxis(type = "addCategoryAxis") %>%
-  add_legend()
+  addLegend()
 
 
 ..p.()# ================================
@@ -238,7 +235,7 @@ dimple(
 ) %>%
   xAxis( type = "addMeasureAxis" ) %>%
   yAxis( type = "addMeasureAxis" ) %>%
-  add_legend()
+  addLegend()
 
 
 ..p.()# ================================
@@ -251,7 +248,7 @@ dimple(
 ) %>%
   #defaults to yAxis (Measure) and xAxis (Category)
   xAxis( orderRule = "Date") %>%
-  add_legend( )
+  addLegend( )
 
 
 ..p.()# ================================
@@ -267,7 +264,7 @@ dimple(
 ) %>%
   #defaults to yAxis (Measure) and xAxis (Category)
   setBounds( 50, 20 , 450, 300 ) %>%
-  add_legend(
+  addLegend(
     x = 520,
     y = "35%",
     width = 80,
@@ -286,7 +283,7 @@ dimple(
 ) %>%
   xAxis( type = "addMeasureAxis" ) %>%
   yAxis( type = "addCategoryAxis", orderRule = "Date") %>%
-  add_legend()
+  addLegend()
 
 
 ..p.()# ================================
@@ -300,7 +297,7 @@ dimple(
 ) %>%
   xAxis( type = "addMeasureAxis" ) %>%
   yAxis( type = "addCategoryAxis") %>%
-  add_legend( )
+  addLegend( )
 
 
 ..p.()# ================================
@@ -314,7 +311,7 @@ dimple(
 ) %>%
   xAxis( type = "addCategoryAxis" ) %>%
   yAxis( type = "addCategoryAxis") %>%
-  add_legend()
+  addLegend()
 
 
 ..p.()# ================================
@@ -331,7 +328,7 @@ dimple(
   yAxis( type = "addMeasureAxis" ) %>%
   # zAxis will be "addMeasureAxis" by default
   zAxis( type = "addMeasureAxis" ) %>%
-  add_legend()
+  addLegend()
 
 
 ..p.()# ================================
@@ -345,7 +342,7 @@ dimple(
   type = "bubble"
 ) %>%
   xAxis( orderRule = "Date" ) %>%
-  add_legend( )
+  addLegend( )
 
 
 ..p.()# ================================
@@ -358,7 +355,7 @@ dimple(
   data = ex_data,
   type = "bubble"
 ) %>%
-  add_legend()
+  addLegend()
 
 ..p.()# ================================
 #example 25 Horizontal Bubble Lollipop
@@ -372,7 +369,7 @@ dimple(
 ) %>%
   yAxis( type = "addCategoryAxis", orderRule = "Date" ) %>%
   xAxis( type = "addMeasureAxis" ) %>%
-  add_legend()
+  addLegend()
 
 
 ..p.()# ================================
@@ -387,7 +384,7 @@ dimple(
 ) %>%
   yAxis( type = "addCategoryAxis" ) %>%
   xAxis( type = "addMeasureAxis" ) %>%
-  add_legend()
+  addLegend()
 
 ..p.()# ================================
 #example 27 Bubble Matrix
@@ -403,7 +400,7 @@ dimple(
   xAxis( type = "addCategoryAxis" ) %>%
   yAxis( type = "addCategoryAxis" ) %>%
   zAxis( type = "addMeasureAxis", overrideMax = 200 ) %>%
-  add_legend()
+  addLegend()
 
 ..p.()# ================================
 #example 28 Area
@@ -423,7 +420,7 @@ dimple(
   type = "area"
 ) %>%
   xAxis(orderRule = "Date") %>%
-  add_legend()
+  addLegend()
 
 ..p.()# ================================
 #example 30 100% Stacked Area
@@ -434,7 +431,7 @@ dimple(
   type = "area"
 ) %>%
   xAxis(orderRule = "Date") %>%
-  add_legend() %>%
+  addLegend() %>%
   #just change type to pct for y axis
   yAxis( type = "addPctAxis" )
 
@@ -450,7 +447,7 @@ dimple(
   type = "area"
 ) %>%
   xAxis(grouporderRule = "Date") %>%
-  add_legend()
+  addLegend()
 
 
 ..p.()# ================================
@@ -469,7 +466,7 @@ dimple(
 ) %>%
   xAxis(grouporderRule = "Date") %>%
   yAxis(type = "addMeasureAxis") %>%
-  add_legend(
+  addLegend(
     x = 430,
     y = "10%",
     width = 100,
@@ -493,7 +490,7 @@ dimple(
   width = 590
 ) %>%
   xAxis(grouporderRule = "Date") %>%
-  add_legend(
+  addLegend(
     x = 430,
     y = 20,
     width = 100,
@@ -524,7 +521,7 @@ dimple(
 ) %>%
   xAxis(type = "addMeasureAxis") %>%
   yAxis(type = "addCategoryAxis", orderRule = "Date") %>%
-  add_legend()
+  addLegend()
 
 ..p.()# ================================
 #example 36 Vertical 100% Stacked Area
@@ -537,7 +534,7 @@ dimple(
 ) %>%
   xAxis(type = "addPctAxis") %>%
   yAxis(type = "addCategoryAxis", grouporderRule = "Date") %>%
-  add_legend()
+  addLegend()
 
 ..p.()# ================================
 #example 37 Vertical Grouped Area
@@ -569,7 +566,7 @@ dimple(
 ) %>%
   xAxis(type = "addMeasureAxis") %>%
   yAxis(type = "addCategoryAxis", grouporderRule = "Date") %>%
-  add_legend(
+  addLegend(
     x = 430,
     y = 20,
     width = 100,
@@ -596,7 +593,7 @@ ex_data %>%
 ) %>%
   xAxis( type = "addPctAxis" ) %>%
   yAxis(type = "addCategoryAxis", grouporderRule = "Date") %>%
-  add_legend(
+  addLegend(
     x = 430,
     y = 20,
     width = 100,
@@ -624,7 +621,7 @@ ex_data %>%
     type = "line"
   ) %>%
   xAxis(orderRule = "Date") %>%
-  add_legend()
+  addLegend()
 
 ..p.()# ================================
 #example 42 Grouped Single Line
@@ -655,7 +652,7 @@ ex_data %>%
     width = 590
   ) %>%
   xAxis(grouporderRule = "Date") %>%
-  add_legend(
+  addLegend(
     x = 510,
     y = "10%",
     width = 100,
@@ -691,7 +688,7 @@ ex_data %>%
   ) %>%
   xAxis(type = "addMeasureAxis") %>%
   yAxis(type = "addCategoryAxis", orderRule = "Date") %>%
-  add_legend(
+  addLegend(
     x = 60,
     y = 10,
     width = 500,
@@ -729,7 +726,7 @@ ex_data %>%
   ) %>%
   xAxis(type = "addMeasureAxis") %>%
   yAxis(type = "addCategoryAxis", grouporderRule = "Date") %>%
-  add_legend(
+  addLegend(
     x = 430,
     y = 20,
     width = 100,
@@ -930,7 +927,7 @@ tagList(
           height = 200, width = 400
         ) %>>%
         xAxis( type = "addMeasureAxis") %>>%
-        add_title("Only One Dot?")
+        addTitle("Only One Dot?")
       
       # demo what happens if we keep categorical x
       ,tips %>>%
@@ -940,11 +937,11 @@ tagList(
           type = "bubble",
           height = 200, width = 400
         )%>>%
-        add_title("Partial Solve but x Axis Problems and some agg")
-      ,d1 %>>% add_title("Use a Unique Id, But Lots of Colors")
-      ,tack(d1, options = list(groups = "group") ) %>>% add_title("Use Groups as Feature, Colors Make Sense")
-      ,defaultColors(d1, list('#00ccff') ) %>>% add_title("Get Points with id all Same Color")
-      ,defaultColors(tack(d1, options = list(groups = "group")),list("#bb00cc")) %>>% add_title("Get Points with group all Same Color")
+        addTitle("Partial Solve but x Axis Problems and some agg")
+      ,d1 %>>% addTitle("Use a Unique Id, But Lots of Colors")
+      ,tack(d1, options = list(groups = "group") ) %>>% addTitle("Use Groups as Feature, Colors Make Sense")
+      ,defaultColors(d1, list('#00ccff') ) %>>% addTitle("Get Points with id all Same Color")
+      ,defaultColors(tack(d1, options = list(groups = "group")),list("#bb00cc")) %>>% addTitle("Get Points with group all Same Color")
     ),function(x){ tags$div(x,style="float:left;") }
   )
 ) %>>% html_print

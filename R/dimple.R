@@ -48,9 +48,7 @@ dimple <- function( data, x, type = type
     
     # as of now the dimple js widget expects params and data
     # to be separate
-    options$data = NULL
-
-    data = to_json(data, orient = "records", json = F)
+    options$data = data
     
     d <- htmlwidgets::createWidget('dimple', list(options = options, data = data), 
         width = width, height = height
@@ -242,4 +240,11 @@ dimpleOutput <- function(outputId, width = "100%", height = "500px"){
 renderDimple <- function(expr, env = parent.frame(), quoted = FALSE){
   if (!quoted){expr <- substitute(expr)}
   htmlwidgets::shinyRenderWidget(expr, dimpleOutput, env, quoted = TRUE)
+}
+
+#' @family dimple
+#' @export
+addTitle <- function(viz, text = NULL, html = NULL, enable = TRUE, ...){
+  viz$x$options$title = list(text = text, html = html, enable = enable, ...)
+  return(viz)
 }

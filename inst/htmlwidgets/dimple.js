@@ -27,6 +27,10 @@ HTMLWidgets.widget({
         el.appendChild(titlenode);
       }
     }
+    
+    // make data in record or array of objects format
+    //    using the HTMLWidgets helper function
+    x.data = HTMLWidgets.dataframeToD3(x.data);
 
     el.widgetDimple = drawChart(x.options, x.data);
     
