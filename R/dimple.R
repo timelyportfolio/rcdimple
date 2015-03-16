@@ -14,15 +14,20 @@
 #' @param groups see \code{group}
 #' @param type a string indicating plot type ( \href{http://github.com/PMSI-AlignAlytics/dimple/wiki/dimple.plot}{bar, line, area, or bubble} ) 
 #' @param storyboard column name(s) with data for \href{https://github.com/PMSI-AlignAlytics/dimple/wiki/dimple.storyboard}{dimple.storyboard}
+#' @param ... various additional arguments to future-proof and provide
+#'          undocumented functionality.
+#' @param pipe \code{logical} to return a \code{\link[pipeR]{Pipe}}.
 #' @param width width in pixels of the plot container.  Plot \code{width} can be set separately (see \code{\link{setBounds}}).
 #' @param height height in pixels of the plot container.  Plot \code{height} can be set separately (see \code{\link{setBounds}}).
+#' @param elementId \code{string} css selector id for the chart.  If the \code{elementId} is \code{NULL}, 
+#'           a semi-random id will be assigned.
 #' 
 #' @family dimple
 #' @export
 #' @import htmltools
 #' @import htmlwidgets
 dimple <- function( data, x, type = type
-  , y = NULL, z = NULL, groups = NULL, group = NULL
+  , y = NULL, z = NULL, groups = NULL, group = NULL, storyboard = NULL
   , ...
   , pipe = F, width = NULL, height = NULL, elementId = NULL) {
   
@@ -45,10 +50,6 @@ dimple <- function( data, x, type = type
       , getLayer(x = x, y = y, data = data, type = type, 
          groups = groups %||% group, z = z, ...
     ))
-    
-    # as of now the dimple js widget expects params and data
-    # to be separate
-    options$data = data
     
     d <- htmlwidgets::createWidget('dimple', list(options = options, data = data), 
         width = width, height = height

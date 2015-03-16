@@ -5,8 +5,8 @@
 \title{Plot R data with dimple}
 \usage{
 dimple(data, x, type = type, y = NULL, z = NULL, groups = NULL,
-  group = NULL, ..., pipe = F, width = NULL, height = NULL,
-  elementId = NULL)
+  group = NULL, storyboard = NULL, ..., pipe = F, width = NULL,
+  height = NULL, elementId = NULL)
 }
 \arguments{
 \item{data}{a \code{\link[base]{data.frame}} with the data to plot}
@@ -24,11 +24,19 @@ as \code{y} or \code{y}.  If multiple column names for either \code{x} or \code{
 \item{group}{column name(s) of \code{groups}.  Dimple differs from other \code{rCharts2} libraries
 in its ability to handle multiple fields or column names as \code{groups}.}
 
+\item{storyboard}{column name(s) with data for \href{https://github.com/PMSI-AlignAlytics/dimple/wiki/dimple.storyboard}{dimple.storyboard}}
+
+\item{...}{various additional arguments to future-proof and provide
+undocumented functionality.}
+
+\item{pipe}{\code{logical} to return a \code{\link[pipeR]{Pipe}}.}
+
 \item{width}{width in pixels of the plot container.  Plot \code{width} can be set separately (see \code{\link{setBounds}}).}
 
 \item{height}{height in pixels of the plot container.  Plot \code{height} can be set separately (see \code{\link{setBounds}}).}
 
-\item{storyboard}{column name(s) with data for \href{https://github.com/PMSI-AlignAlytics/dimple/wiki/dimple.storyboard}{dimple.storyboard}}
+\item{elementId}{\code{string} css selector id for the chart.  If the \code{elementId} is \code{NULL},
+          a semi-random id will be assigned.}
 }
 \description{
 Use \href{http://dimplejs.org}{Dimple} with this \code{htmlwidget}.  Dimple is a powerful javascript library
