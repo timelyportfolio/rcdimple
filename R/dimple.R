@@ -1,6 +1,6 @@
-#' Dimple
+#' Plot R data with dimple
 #' 
-#' Use \href{http://dimplejs.org}{Dimple} with \code{rCharts2}.  Dimple is a powerful javascript library
+#' Use \href{http://dimplejs.org}{Dimple} with this \code{htmlwidget}.  Dimple is a powerful javascript library
 #'  based on \href{http://d3js.org}{d3.js}.  Dimple supports numerous chart \href{http://dimplejs.org/examples_index.html}{types} and is
 #'  well \href{https://github.com/PMSI-AlignAlytics/dimple/wiki}{documented}.
 #'

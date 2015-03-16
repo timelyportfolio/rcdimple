@@ -2,7 +2,7 @@
 % Please edit documentation in R/dimple.R
 \name{dimple}
 \alias{dimple}
-\title{Dimple}
+\title{Plot R data with dimple}
 \usage{
 dimple(data, x, type = type, y = NULL, z = NULL, groups = NULL,
   group = NULL, ..., pipe = F, width = NULL, height = NULL,
@@ -31,7 +31,7 @@ in its ability to handle multiple fields or column names as \code{groups}.}
 \item{storyboard}{column name(s) with data for \href{https://github.com/PMSI-AlignAlytics/dimple/wiki/dimple.storyboard}{dimple.storyboard}}
 }
 \description{
-Use \href{http://dimplejs.org}{Dimple} with \code{rCharts2}.  Dimple is a powerful javascript library
+Use \href{http://dimplejs.org}{Dimple} with this \code{htmlwidget}.  Dimple is a powerful javascript library
  based on \href{http://d3js.org}{d3.js}.  Dimple supports numerous chart \href{http://dimplejs.org/examples_index.html}{types} and is
  well \href{https://github.com/PMSI-AlignAlytics/dimple/wiki}{documented}.
 }
