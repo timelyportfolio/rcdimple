@@ -316,7 +316,8 @@ HTMLWidgets.widget({
             }
           
             //unsure if this is best but if legend is provided (not empty) then evaluate
-            if(d3.keys(opts.legend).length > 0) {
+            // also only want one legend so only set for cellnum = 0
+            if(d3.keys(opts.legend).length > 0 && cellnum == 0) {
               var l =subChart.addLegend();
               d3.keys(opts.legend).forEach(function(d){
                 l[d] = opts.legend[d];
