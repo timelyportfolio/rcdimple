@@ -561,7 +561,7 @@ dimple(
   bounds = list(x=90,y=30,width=320,height=330),
   lineWeight = 1,
   barGap = 0.05,
-  height = 400,
+  height = 450,
   width = 590
 ) %>%
   xAxis(type = "addMeasureAxis") %>%
@@ -588,7 +588,7 @@ ex_data %>%
     bounds = list(x=90,y=30,width=320,height=330),
     lineWeight = 1,
     barGap = 0.05,
-    height = 400,
+    height = 450,
     width = 590
 ) %>%
   xAxis( type = "addPctAxis" ) %>%
@@ -648,7 +648,7 @@ ex_data %>%
     type = "line",
     bounds = list(x=70,y=30,width=420,height=330),
     barGap = 0.05,
-    height = 400,
+    height = 450,
     width = 590
   ) %>%
   xAxis(grouporderRule = "Date") %>%
@@ -683,7 +683,7 @@ ex_data %>%
     groups = "Channel",
     type = "line",
     bounds = list(x=80,y=30,width=480,height=330),
-    height = 400,
+    height = 450,
     width = 590
   ) %>%
   xAxis(type = "addMeasureAxis") %>%
@@ -721,7 +721,7 @@ ex_data %>%
     type = "line",
     bounds = list(x=90,y=30,width=320,height=330),
     barGap = 0.05,
-    height = 400,
+    height = 450,
     width = 590
   ) %>%
   xAxis(type = "addMeasureAxis") %>%
@@ -737,15 +737,14 @@ d1
 
 #show how to change defaultColors
 ..p.()# ================================
-require(latticeExtra)
 d1 %>% 
-  defaultColors(theEconomist.theme()$superpose.line$col)
+  defaultColors(latticeExtra::theEconomist.theme()$superpose.line$col)
 ..p.()# ================================
 d1 %>%
   defaultColors( terrain.colors(8) )
 ..p.()# ================================
 d1 %>%
-  defaultColors(brewer.pal(n=9,"Blues"))
+  defaultColors(RColorBrewer::brewer.pal(n=9,"Blues"))
 ..p.()# ================================
 d1 %>%
   defaultColors(htmlwidgets::JS('d3.scale.category20c()'))
@@ -812,10 +811,10 @@ d1$x$options$layers = list(list(
 ))
 # layers don't line up
 # for now to make it work, need overrideMin and overrideMax
-d1 %>>% 
+d1 %>% 
   yAxis(
     overrideMin = min(df$y), overrideMax = max(df$y), outputFormat = "0.2f"
-  ) %>>%
+  ) %>%
   xAxis( overrideMin = 0, overrideMax = 1)
 
 
