@@ -146,7 +146,7 @@ zAxis.dimple <- function(viz, ...){
 #' @family legend
 #' 
 #' @export
-addLegend <- function(viz, ...){
+add_legend <- function(viz, ...){
   # set some sane defaults so use modifyList
   viz$x$options$legend = modifyList(
     list(
@@ -185,7 +185,7 @@ colorAxis = function(viz, ...){
 #'
 #' @family dimple
 #' @export
-defaultColors = function(viz, ...){
+default_colors = function(viz, ...){
   viz$x$options$defaultColors = list(...)
   return(viz)
 }
@@ -225,8 +225,15 @@ facet.dimple <- function(viz, x = NULL, y = NULL, removeAxes = F){
 #' 
 #' @family dimple
 #' @export
-setBounds <- function( viz, x, y, width, height ){
+set_bounds <- function( viz, x, y, width, height ){
   viz$x$options$bounds = list( x = x, y = y, width = width, height = height )
+  return(viz)
+}
+
+#' @family dimple
+#' @export
+add_title <- function(viz, text = NULL, html = NULL, enable = TRUE, ...){
+  viz$x$options$title = list(text = text, html = html, enable = enable, ...)
   return(viz)
 }
 
@@ -241,9 +248,3 @@ renderDimple <- function(expr, env = parent.frame(), quoted = FALSE){
   htmlwidgets::shinyRenderWidget(expr, dimpleOutput, env, quoted = TRUE)
 }
 
-#' @family dimple
-#' @export
-addTitle <- function(viz, text = NULL, html = NULL, enable = TRUE, ...){
-  viz$x$options$title = list(text = text, html = html, enable = enable, ...)
-  return(viz)
-}

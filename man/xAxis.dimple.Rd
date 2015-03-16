@@ -36,9 +36,9 @@
 In most cases, parameters closely match those of \href{https://github.com/PMSI-AlignAlytics/dimple/wiki/dimple.axis}{dimple.axis}.
 }
 \seealso{
-Other dimple: \code{\link{addLegend}};
-  \code{\link{defaultColors}}; \code{\link{dimple}};
-  \code{\link{facet.dimple}}; \code{\link{setBounds}}
+Other dimple: \code{\link{add_legend}};
+  \code{\link{default_colors}}; \code{\link{dimple}};
+  \code{\link{facet.dimple}}; \code{\link{set_bounds}}
 
 Other xAxis: \code{\link{xAxis}}; \code{\link{yAxis}};
   \code{\link{zAxis}}
