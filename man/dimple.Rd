@@ -37,8 +37,8 @@ Use \href{http://dimplejs.org}{Dimple} with \code{rCharts2}.  Dimple is a powerf
 }
 \seealso{
 Other dimple: \code{\link{addLegend}};
-  \code{\link{defaultColors}}; \code{\link{setBounds}};
-  \code{\link{xAxis.dimple}}, \code{\link{yAxis.dimple}},
-  \code{\link{zAxis.dimple}}
+  \code{\link{defaultColors}}; \code{\link{facet.dimple}};
+  \code{\link{setBounds}}; \code{\link{xAxis.dimple}},
+  \code{\link{yAxis.dimple}}, \code{\link{zAxis.dimple}}
 }
 

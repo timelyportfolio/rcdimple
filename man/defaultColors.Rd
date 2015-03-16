@@ -25,8 +25,8 @@ ChickWeight \%>\%
 }
 \seealso{
 Other dimple: \code{\link{addLegend}};
-  \code{\link{dimple}}; \code{\link{setBounds}};
-  \code{\link{xAxis.dimple}}, \code{\link{yAxis.dimple}},
-  \code{\link{zAxis.dimple}}
+  \code{\link{dimple}}; \code{\link{facet.dimple}};
+  \code{\link{setBounds}}; \code{\link{xAxis.dimple}},
+  \code{\link{yAxis.dimple}}, \code{\link{zAxis.dimple}}
 }
 

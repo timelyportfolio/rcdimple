@@ -4,15 +4,9 @@
 \alias{facet}
 \title{Modify plot elements that relate to the x-axis.}
 \usage{
-facet(x, ...)
+facet(...)
 }
 \description{
 This is an S3 method.
-}
-\seealso{
-Other xAxis: \code{\link{xAxis.dimple}},
-  \code{\link{yAxis.dimple}}, \code{\link{zAxis.dimple}};
-  \code{\link{xAxis}}; \code{\link{yAxis}};
-  \code{\link{zAxis}}
 }
 

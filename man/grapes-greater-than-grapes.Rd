@@ -2,11 +2,11 @@
 % Please edit documentation in R/utils.R
 \name{\%>\%}
 \alias{\%>\%}
-\title{pipe with magrittr importFrom}
+\title{pipe with magrittr importFrom; uses dplyr technique}
 \usage{
 lhs \%>\% rhs
 }
 \description{
-pipe with magrittr importFrom
+pipe with magrittr importFrom; uses dplyr technique
 }
 

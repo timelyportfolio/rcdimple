@@ -4,9 +4,15 @@
 \alias{facet.dimple}
 \title{Add facets to a Dimple chart}
 \usage{
-\method{facet}{dimple}(viz, ...)
+\method{facet}{dimple}(viz, x = NULL, y = NULL, removeAxes = F)
 }
 \description{
 Add facets to a Dimple chart
+}
+\seealso{
+Other dimple: \code{\link{addLegend}};
+  \code{\link{defaultColors}}; \code{\link{dimple}};
+  \code{\link{setBounds}}; \code{\link{xAxis.dimple}},
+  \code{\link{yAxis.dimple}}, \code{\link{zAxis.dimple}}
 }
 

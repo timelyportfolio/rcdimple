@@ -38,9 +38,9 @@ In most cases, parameters closely match those of \href{https://github.com/PMSI-A
 \seealso{
 Other dimple: \code{\link{addLegend}};
   \code{\link{defaultColors}}; \code{\link{dimple}};
-  \code{\link{setBounds}}
+  \code{\link{facet.dimple}}; \code{\link{setBounds}}
 
-Other xAxis: \code{\link{facet}}; \code{\link{xAxis}};
-  \code{\link{yAxis}}; \code{\link{zAxis}}
+Other xAxis: \code{\link{xAxis}}; \code{\link{yAxis}};
+  \code{\link{zAxis}}
 }
 

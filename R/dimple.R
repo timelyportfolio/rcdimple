@@ -193,17 +193,16 @@ defaultColors = function(viz, ...){
 #' Modify plot elements that relate to the x-axis.
 #' 
 #' This is an S3 method.
-#' @family xAxis
 #' @export
-facet <- function(x, ...){
+facet <- function(...){
   UseMethod('facet')
 }
 
 #' Add facets to a Dimple chart
-#' 
+#' @family dimple
 #' @export
-facet.dimple <- function(viz, ...){
-  viz$x$options$facet = list(...)
+facet.dimple <- function(viz, x = NULL, y = NULL, removeAxes = F){
+  viz$x$options$facet = list( x = x, y = y, removeAxes = removeAxes )
   return(viz)
 }
 
