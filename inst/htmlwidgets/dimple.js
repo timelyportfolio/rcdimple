@@ -111,7 +111,7 @@ HTMLWidgets.widget({
       //set up a function since same for each
       //as of now we have x,y,groups,data,type in opts for primary layer
       //and other layers reside in opts.layers
-      function buildSeries(layer, hidden, myChart){
+      function buildSeries(layer, hidden, myChart, data){
         //inherit from primary layer if not intentionally changed or xAxis, yAxis, zAxis null
         if (!layer.xAxis) layer.xAxis = opts.xAxis;    
         if (!layer.yAxis) layer.yAxis = opts.yAxis;
@@ -135,6 +135,10 @@ HTMLWidgets.widget({
         var s = new dimple.series(myChart, null, x, y, z, c, null, dimple.plot[layer.type], dimple.aggregateMethod.avg, dimple.plot[layer.type].stacked);
         
         //as of v1.1.4 dimple can use different dataset for each series
+        // facets not currently working with layer data; need to change structure
+        // for now just allow one source of data
+        s.data = data;
+        /*
         if(layer.data){
           //convert to an array of objects
           var tempdata;
@@ -149,6 +153,7 @@ HTMLWidgets.widget({
           })
           s.data = tempdata;
         }
+        */
         
         if(layer.hasOwnProperty("groups")) {
           s.categoryFields = (typeof layer.groups === "object") ? layer.groups : [layer.groups];
@@ -257,86 +262,86 @@ HTMLWidgets.widget({
       tuples.forEach(function(cell,cellnum) {
 
         var filteredData = dimple.filterData(data, opts.facet.x, cell.key.split('~')[1]);
-          filteredData = dimple.filterData(filteredData, opts.facet.y, cell.key.split('~')[0]);    
+        filteredData = dimple.filterData(filteredData, opts.facet.y, cell.key.split('~')[0]);    
+        
+        // Draw a new chart which will go in the current shape
+        var subChart = new dimple.chart(svgGrid, filteredData);
+
+        if (tuples.length > 1){
+          // Position the chart inside the shape
+          subChart.height = grid.nodeSize()[1]
+          subChart.width = grid.nodeSize()[0]      
           
-          // Draw a new chart which will go in the current shape
-          var subChart = new dimple.chart(svgGrid, filteredData);
-  
-          if (tuples.length > 1){
-            // Position the chart inside the shape
-            subChart.height = grid.nodeSize()[1]
-            subChart.width = grid.nodeSize()[0]      
-            
-            if (opts.margins) {
-              subChart.setBounds(
-                parseFloat(cell.x) + opts.margins.left,
-                parseFloat(cell.y) + opts.margins.top,
-                subChart.width - opts.margins.right- opts.margins.left,
-                subChart.height - opts.margins.top - opts.margins.bottom
-              )
-            } else {
-              subChart.setBounds(
-                parseFloat(cell.x) + (30 * ( ncol == 1 ? 1.5 : 1 )), 
-                parseFloat(cell.y) + (20 * ( nrow == 1 ? 1.5 : 2 )),
-                parseFloat(grid.nodeSize()[0]) - (30 * ( ncol == 1 ? 1.25 : 2 )),
-                parseFloat(grid.nodeSize()[1]) - (20 * ( nrow == 1 ? 3 : 2.5 ))
-              );
-            }
-            
-          } else { //only one chart
-            if (opts.bounds) {
-              subChart.setBounds(opts.bounds.x, opts.bounds.y, opts.bounds.width, opts.bounds.height);//myChart.setBounds(80, 30, 480, 330);
-            }
+          if (opts.margins) {
+            subChart.setBounds(
+              parseFloat(cell.x) + opts.margins.left,
+              parseFloat(cell.y) + opts.margins.top,
+              subChart.width - opts.margins.right- opts.margins.left,
+              subChart.height - opts.margins.top - opts.margins.bottom
+            )
+          } else {
+            subChart.setBounds(
+              parseFloat(cell.x) + (30 * ( ncol == 1 ? 1.5 : 1 )), 
+              parseFloat(cell.y) + (20 * ( nrow == 1 ? 1.5 : 2 )),
+              parseFloat(grid.nodeSize()[0]) - (30 * ( ncol == 1 ? 1.25 : 2 )),
+              parseFloat(grid.nodeSize()[1]) - (20 * ( nrow == 1 ? 3 : 2.5 ))
+            );
           }
           
-            //dimple allows use of custom CSS with noFormats
-            if(opts.noFormats) { subChart.noFormats = opts.noFormats; };
-            
-            //need to fix later for better colorAxis support
-            if(d3.keys(opts.colorAxis).length > 0) {
-              c = subChart[opts.colorAxis.type](opts.colorAxis.colorSeries,opts.colorAxis.palette) ;
-              if(opts.colorAxis.outputFormat){
-                c.tickFormat = opts.colorAxis.outputFormat;
-              }
-            }
-          
-            //add the colors from the array into the chart's defaultColors
-            if (typeof defaultColorsArray != "undefined"){
-              subChart.defaultColors = defaultColorsArray.map(function(d) {
-                return new dimple.color(d);
-              });          
-            }
-            subChart._assignedColors = assignedColors;
-            
-            subChart = buildSeries(opts, false, subChart);
-            if (opts.layers.length > 0) {
-              opts.layers.forEach(function(layer){
-                subChart = buildSeries(layer, true, subChart);
-              })
-            }
-          
-            //unsure if this is best but if legend is provided (not empty) then evaluate
-            // also only want one legend so only set for cellnum = 0
-            if(d3.keys(opts.legend).length > 0 && cellnum == 0) {
-              var l =subChart.addLegend();
-              d3.keys(opts.legend).forEach(function(d){
-                l[d] = opts.legend[d];
-              });
-            }
-            //quick way to get this going but need to make this cleaner
-            if(opts.storyboard) {
-              subChart.setStoryboard(opts.storyboard);
-            };
-            
-            //catch all for other options
-            //these can be provided by dMyChart$chart( ... )
-            //{{{ chart }}}  
-            
-            //add facet row and column in case we need later
-            subChart.facetposition = cell.values;
-            
-            subCharts.push(subChart);
+        } else { //only one chart
+          if (opts.bounds) {
+            subChart.setBounds(opts.bounds.x, opts.bounds.y, opts.bounds.width, opts.bounds.height);//myChart.setBounds(80, 30, 480, 330);
+          }
+        }
+        
+        //dimple allows use of custom CSS with noFormats
+        if(opts.noFormats) { subChart.noFormats = opts.noFormats; };
+        
+        //need to fix later for better colorAxis support
+        if(d3.keys(opts.colorAxis).length > 0) {
+          c = subChart[opts.colorAxis.type](opts.colorAxis.colorSeries,opts.colorAxis.palette) ;
+          if(opts.colorAxis.outputFormat){
+            c.tickFormat = opts.colorAxis.outputFormat;
+          }
+        }
+      
+        //add the colors from the array into the chart's defaultColors
+        if (typeof defaultColorsArray != "undefined"){
+          subChart.defaultColors = defaultColorsArray.map(function(d) {
+            return new dimple.color(d);
+          });          
+        }
+        subChart._assignedColors = assignedColors;
+        
+        subChart = buildSeries(opts, false, subChart, filteredData);
+        if (opts.layers.length > 0) {
+          opts.layers.forEach(function(layer){
+            subChart = buildSeries(layer, true, subChart, filteredData);
           })
+        }
+      
+        //unsure if this is best but if legend is provided (not empty) then evaluate
+        // also only want one legend so only set for cellnum = 0
+        if(d3.keys(opts.legend).length > 0 && cellnum == 0) {
+          var l =subChart.addLegend();
+          d3.keys(opts.legend).forEach(function(d){
+            l[d] = opts.legend[d];
+          });
+        }
+        //quick way to get this going but need to make this cleaner
+        if(opts.storyboard) {
+          subChart.setStoryboard(opts.storyboard);
+        };
+        
+        //catch all for other options
+        //these can be provided by dMyChart$chart( ... )
+        //{{{ chart }}}  
+        
+        //add facet row and column in case we need later
+        subChart.facetposition = cell.values;
+        
+        subCharts.push(subChart);
+      })
     
       subCharts.forEach(function(subChart) {
         subChart.draw();
