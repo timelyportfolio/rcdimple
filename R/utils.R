@@ -63,7 +63,7 @@ tack.dimple <- function(x, ...){
 }
 
 
-#' pipe with magrittr importFrom
+#' pipe with magrittr importFrom; uses dplyr technique
 #' @importFrom magrittr %>%
 #' @name %>%
 #' @export
