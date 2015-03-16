@@ -190,21 +190,6 @@ defaultColors = function(viz, ...){
   return(viz)
 }
 
-#' Modify plot elements that relate to the x-axis.
-#' 
-#' This is an S3 method.
-#' @export
-facet <- function(...){
-  UseMethod('facet')
-}
-
-#' Add facets to a Dimple chart
-#' @family dimple
-#' @export
-facet.dimple <- function(viz, x = NULL, y = NULL, removeAxes = F){
-  viz$x$options$facet = list( x = x, y = y, removeAxes = removeAxes )
-  return(viz)
-}
 
 #' Set the \href{https://github.com/PMSI-AlignAlytics/dimple/wiki/dimple.chart#setBounds}{bounds} or size of the chart within the svg container.
 #' 
