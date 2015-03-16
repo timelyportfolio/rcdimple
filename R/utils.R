@@ -61,3 +61,11 @@ tack.dimple <- function(x, ...){
 `%||%` <- function(x, y){
   if (is.null(x)) y else x
 }
+
+
+#' pipe with magrittr importFrom
+#' @importFrom magrittr %>%
+#' @name %>%
+#' @export
+#' @usage lhs \%>\% rhs
+NULL
