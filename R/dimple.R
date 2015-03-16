@@ -52,7 +52,7 @@ dimple <- function( data, x, type = type
     
     d <- htmlwidgets::createWidget('dimple', list(options = options, data = data), 
         width = width, height = height
-       , package = 'rCharts2'
+       , package = 'rcdimple'
        , elementId = elementId
     )
     if (pipe) pipeR::Pipe(d) else d
