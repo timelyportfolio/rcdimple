@@ -29,7 +29,8 @@ dimple( weight ~ Time, groups = "Diet" , type = "line", data = ChickWeight, widt
   add_legend( x = 50, y = 390, width = 500, horizontalAlign = "right" )
 }
 \seealso{
-Other dimple: \code{\link{default_colors}};
+Other dimple: \code{\link{add_title}};
+  \code{\link{colorAxis}}; \code{\link{default_colors}};
   \code{\link{dimple}}; \code{\link{facet.dimple}};
   \code{\link{set_bounds}}; \code{\link{xAxis.dimple}},
   \code{\link{yAxis.dimple}}, \code{\link{zAxis.dimple}}

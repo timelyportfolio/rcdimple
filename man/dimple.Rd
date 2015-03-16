@@ -45,6 +45,7 @@ Use \href{http://dimplejs.org}{Dimple} with this \code{htmlwidget}.  Dimple is a
 }
 \seealso{
 Other dimple: \code{\link{add_legend}};
+  \code{\link{add_title}}; \code{\link{colorAxis}};
   \code{\link{default_colors}}; \code{\link{facet.dimple}};
   \code{\link{set_bounds}}; \code{\link{xAxis.dimple}},
   \code{\link{yAxis.dimple}}, \code{\link{zAxis.dimple}}

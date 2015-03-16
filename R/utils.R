@@ -56,8 +56,11 @@ tack.dimple <- function(x, ...){
   return(x)
 }
 
-
-
+#' Utility code to return y if x is NULL
+#' 
+#' @keywords internal
+#' @noRd
+#'
 `%||%` <- function(x, y){
   if (is.null(x)) y else x
 }

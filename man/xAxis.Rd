@@ -9,9 +9,4 @@ xAxis(x, ...)
 \description{
 This is an S3 method.
 }
-\seealso{
-Other xAxis: \code{\link{xAxis.dimple}},
-  \code{\link{yAxis.dimple}}, \code{\link{zAxis.dimple}};
-  \code{\link{yAxis}}; \code{\link{zAxis}}
-}
 

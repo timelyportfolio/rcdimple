@@ -84,9 +84,7 @@ xAxis <- function(x, ...){
 #' @param timeInterval for time axis number of periods between ticks.  See \href{https://github.com/PMSI-AlignAlytics/dimple/wiki/dimple.axis#timeInterval}{dimple.axis.timeInterval}.
 #' 
 #' @family dimple
-#' @family xAxis
-#' @family yAxis
-#' @family zAxis
+#' @family axis
 #'
 #' @export
 xAxis.dimple <- function(viz, ...){
@@ -97,7 +95,7 @@ xAxis.dimple <- function(viz, ...){
 #' Modify plot elements that relate to the x-axis.
 #' 
 #' This is an S3 method.
-#' @family xAxis
+#' @family axis
 #' @export
 yAxis <- function(x, ...){
   UseMethod('yAxis')
@@ -113,7 +111,7 @@ yAxis.dimple <- function(viz, ...){
 #' Modify plot elements that relate to the x-axis.
 #' 
 #' This is an S3 method.
-#' @family xAxis
+#' @family axis
 #' @export
 zAxis <- function(x, ...){
   UseMethod('zAxis')
@@ -125,6 +123,17 @@ zAxis.dimple <- function(viz, ...){
   viz$x$options$zAxis = modifyList(viz$x$options$zAxis, list(...))
   return(viz)
 }
+
+
+#' @family dimple
+#' @family axis
+#' @rdname colorAxis.dimple
+#' @export
+colorAxis = function(viz, ...){
+  viz$x$options$colorAxis = list(...)
+  return(viz)
+}
+
 
 #' Add a legend to a dimple chart
 #' 
@@ -162,17 +171,10 @@ add_legend <- function(viz, ...){
   return(viz)
 }
 
-#' @family dimple
-#' @export
-colorAxis = function(viz, ...){
-  viz$x$options$colorAxis = list(...)
-  return(viz)
-}
-
 #' Modify colors used in Dimple charts
 #' 
 #' @param viz a dimple object
-#' @param colors a vector of colors in hex or a \code{JS} function, such as a \href{https://github.com/mbostock/d3/wiki/Ordinal-Scales#categorical-colors}{d3 color scale}
+#' @param colors a vector of colors in hex or a \code{\link[htmlwidgets]{JS}} function, such as a \href{https://github.com/mbostock/d3/wiki/Ordinal-Scales#categorical-colors}{d3 color scale}.
 #' 
 #' @examples
 #' ChickWeight %>%
@@ -231,10 +233,19 @@ set_bounds <- function( viz, x, y, width, height ){
   return(viz)
 }
 
+#' Add a title to your chart
+#'
+#' @param viz \code{rCharts2} chart to which you would like to add a title
+#' @param text \code{string} of text to provide in the title
+#' @param html \code{string} of html for your title.  Providing \code{html} instead of
+#'                \code{text} to the title allows the potential to custom format your
+#'                title or provide multiple lines.
+#' @param ... other arguments for consistency with \code{rCharts2} methods.
+#' 
 #' @family dimple
 #' @export
-add_title <- function(viz, text = NULL, html = NULL, enable = TRUE, ...){
-  viz$x$options$title = list(text = text, html = html, enable = enable, ...)
+add_title <- function(viz, text = NULL, html = NULL, ...){
+  viz$x$options$title = list(text = text, html = html, ...)
   return(viz)
 }
 

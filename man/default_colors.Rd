@@ -9,7 +9,7 @@ default_colors(viz, ...)
 \arguments{
 \item{viz}{a dimple object}
 
-\item{colors}{a vector of colors in hex or a \code{JS} function, such as a \href{https://github.com/mbostock/d3/wiki/Ordinal-Scales#categorical-colors}{d3 color scale}}
+\item{colors}{a vector of colors in hex or a \code{\link[htmlwidgets]{JS}} function, such as a \href{https://github.com/mbostock/d3/wiki/Ordinal-Scales#categorical-colors}{d3 color scale}.}
 }
 \description{
 Modify colors used in Dimple charts
@@ -25,6 +25,7 @@ ChickWeight \%>\%
 }
 \seealso{
 Other dimple: \code{\link{add_legend}};
+  \code{\link{add_title}}; \code{\link{colorAxis}};
   \code{\link{dimple}}; \code{\link{facet.dimple}};
   \code{\link{set_bounds}}; \code{\link{xAxis.dimple}},
   \code{\link{yAxis.dimple}}, \code{\link{zAxis.dimple}}
