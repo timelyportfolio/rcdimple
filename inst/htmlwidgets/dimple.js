@@ -34,6 +34,18 @@ HTMLWidgets.widget({
 
     el.widgetDimple = drawChart(x.options, x.data);
     
+    if(typeof x.options.tasks !== "undefined"){
+      if(!x.options.tasks.length){ 
+        x.options.tasks = [x.options.tasks]
+      }
+      
+      x.options.tasks.map(function(task){
+        if(typeof task == "function"){
+          task.call(el)
+        }
+      })
+    }
+    
     function drawChart(opts, data){ 
       var subCharts = [];
       
