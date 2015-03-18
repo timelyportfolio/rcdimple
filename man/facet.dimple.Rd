@@ -11,9 +11,9 @@ Add facets to a Dimple chart
 }
 \seealso{
 Other dimple: \code{\link{add_legend}};
-  \code{\link{add_title}}; \code{\link{colorAxis}};
-  \code{\link{default_colors}}; \code{\link{dimple}};
-  \code{\link{set_bounds}}; \code{\link{xAxis.dimple}},
-  \code{\link{yAxis.dimple}}, \code{\link{zAxis.dimple}}
+  \code{\link{add_title}}; \code{\link{default_colors}};
+  \code{\link{dimple}}; \code{\link{set_bounds}};
+  \code{\link{xAxis.dimple}}, \code{\link{yAxis.dimple}},
+  \code{\link{zAxis.dimple}}
 }
 

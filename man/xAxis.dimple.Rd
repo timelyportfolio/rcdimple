@@ -13,6 +13,8 @@
 \method{zAxis}{dimple}(viz, ...)
 }
 \arguments{
+\item{...}{other properties for dimple axis.  See \href{https://github.com/PMSI-AlignAlytics/dimple/wiki/dimple.axis#properties-1}{Properties}.}
+
 \item{type}{"addMeasureAxis", "addCategoryAxis", "addTimeAxis", or "addPctAxis"}
 
 \item{orderRule}{defines how to sort a categorical axis.  \code{orderRule} can either be a field name as a string or a vector of values in the desired order.}
@@ -30,18 +32,25 @@
 \item{timePeriod}{for time axis periodicity of ticks. See \href{https://github.com/PMSI-AlignAlytics/dimple/wiki/dimple.axis#timePeriod}{dimple.axis.timePeriod}.}
 
 \item{timeInterval}{for time axis number of periods between ticks.  See \href{https://github.com/PMSI-AlignAlytics/dimple/wiki/dimple.axis#timeInterval}{dimple.axis.timeInterval}.}
+
+\item{fontSize}{for font size of axis.  Any valid CSS \code{font-size} will work.}
+
+\item{fontFamily}{for font size of axis.  Any valid CSS \code{font-family} will work.}
+
+\item{useLog}{for logarithmic axis.}
+
+\item{logBase}{for base of log if axis is logarithmic \code{useLog = TRUE}.}
 }
 \description{
 \code{xAxis}, \code{yAxis}, \code{zAxis} configure the x, y, and z axis properties of the chart.
 In most cases, parameters closely match those of \href{https://github.com/PMSI-AlignAlytics/dimple/wiki/dimple.axis}{dimple.axis}.
 }
 \seealso{
-Other axis: \code{\link{colorAxis}}; \code{\link{yAxis}};
-  \code{\link{zAxis}}
+Other axis: \code{\link{yAxis}}; \code{\link{zAxis}}
 
 Other dimple: \code{\link{add_legend}};
-  \code{\link{add_title}}; \code{\link{colorAxis}};
-  \code{\link{default_colors}}; \code{\link{dimple}};
-  \code{\link{facet.dimple}}; \code{\link{set_bounds}}
+  \code{\link{add_title}}; \code{\link{default_colors}};
+  \code{\link{dimple}}; \code{\link{facet.dimple}};
+  \code{\link{set_bounds}}
 }
 

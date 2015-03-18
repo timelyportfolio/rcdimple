@@ -29,9 +29,9 @@ ChickWeight \%>\%
 }
 \seealso{
 Other dimple: \code{\link{add_legend}};
-  \code{\link{add_title}}; \code{\link{colorAxis}};
-  \code{\link{default_colors}}; \code{\link{dimple}};
-  \code{\link{facet.dimple}}; \code{\link{xAxis.dimple}},
-  \code{\link{yAxis.dimple}}, \code{\link{zAxis.dimple}}
+  \code{\link{add_title}}; \code{\link{default_colors}};
+  \code{\link{dimple}}; \code{\link{facet.dimple}};
+  \code{\link{xAxis.dimple}}, \code{\link{yAxis.dimple}},
+  \code{\link{zAxis.dimple}}
 }
 

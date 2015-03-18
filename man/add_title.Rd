@@ -22,9 +22,9 @@ Add a title to your chart
 }
 \seealso{
 Other dimple: \code{\link{add_legend}};
-  \code{\link{colorAxis}}; \code{\link{default_colors}};
-  \code{\link{dimple}}; \code{\link{facet.dimple}};
-  \code{\link{set_bounds}}; \code{\link{xAxis.dimple}},
-  \code{\link{yAxis.dimple}}, \code{\link{zAxis.dimple}}
+  \code{\link{default_colors}}; \code{\link{dimple}};
+  \code{\link{facet.dimple}}; \code{\link{set_bounds}};
+  \code{\link{xAxis.dimple}}, \code{\link{yAxis.dimple}},
+  \code{\link{zAxis.dimple}}
 }
 

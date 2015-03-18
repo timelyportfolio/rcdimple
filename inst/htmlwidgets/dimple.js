@@ -215,13 +215,16 @@ HTMLWidgets.widget({
         if(!(axisopts.type === "addPctAxis")) axis.showPercent = axisopts.showPercent;
         if (axisopts.orderRule) axis.addOrderRule(axisopts.orderRule);
         if (axisopts.grouporderRule) axis.addGroupOrderRule(axisopts.grouporderRule);  
-        if (axisopts.overrideMin) axis.overrideMin = axisopts.overrideMin;
-        if (axisopts.overrideMax) axis.overrideMax = axisopts.overrideMax;
-        if (axisopts.overrideMax) axis.overrideMax = axisopts.overrideMax;
         if (axisopts.inputFormat) axis.dateParseFormat = axisopts.inputFormat;
-        if (axisopts.outputFormat) axis.tickFormat = axisopts.outputFormat;    
-        if (axisopts.timePeriod) axis.timePeriod = axisopts.timePeriod;
-        if (axisopts.timeInterval) axis.timeInterval = axisopts.timeInterval;
+        if (axisopts.outputFormat) axis.tickFormat = axisopts.outputFormat;        
+        Object.keys(axisopts).filter(function(oky){
+          return [
+            "measure","type","orderRule","grouporderRule",
+            "outputFormat","inputFormat"
+          ].indexOf(oky) < 0
+        }).forEach(function(oky){
+          axis[oky] = axisopts[oky]
+        })
         return axis;
       };
           

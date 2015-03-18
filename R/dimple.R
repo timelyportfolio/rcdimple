@@ -82,6 +82,11 @@ xAxis <- function(x, ...){
 #' @param outputFormat the d3 format of an axis.  See \href{https://github.com/PMSI-AlignAlytics/dimple/wiki/dimple.axis#tickFormat}{dimple.axis.tickFormat}.
 #' @param timePeriod for time axis periodicity of ticks. See \href{https://github.com/PMSI-AlignAlytics/dimple/wiki/dimple.axis#timePeriod}{dimple.axis.timePeriod}.
 #' @param timeInterval for time axis number of periods between ticks.  See \href{https://github.com/PMSI-AlignAlytics/dimple/wiki/dimple.axis#timeInterval}{dimple.axis.timeInterval}.
+#' @param fontSize for font size of axis.  Any valid CSS \code{font-size} will work.
+#' @param fontFamily for font size of axis.  Any valid CSS \code{font-family} will work.
+#' @param useLog for logarithmic axis.
+#' @param logBase for base of log if axis is logarithmic \code{useLog = TRUE}.
+#' @param ... other properties for dimple axis.  See \href{https://github.com/PMSI-AlignAlytics/dimple/wiki/dimple.axis#properties-1}{Properties}.
 #' 
 #' @family dimple
 #' @family axis
@@ -127,7 +132,6 @@ zAxis.dimple <- function(viz, ...){
 
 #' @family dimple
 #' @family axis
-#' @rdname colorAxis.dimple
 #' @export
 colorAxis = function(viz, ...){
   viz$x$options$colorAxis = list(...)
