@@ -25,7 +25,7 @@ knitr::opts_chunk$set(
 ```
 
 ### Introduction to `rcdimple`
-`rcdimple` is an `htmlwidget` that leverages the upcoming common methods and conventions of `rCharts2` to make interactive plotting easy and consistent.  Many of these ideas evolve from lessons learned with the [`rCharts`](https://github.com/ramnathv/rCharts) package from [Ramnath Vaidyanathan](https://github.com/ramnathv) who also authored much of the `htmlwidgets` package.  Also, you might notice some bits and pieces of goodness from `lattice`, `ggplot2`, and base `graphics`.
+`rcdimple` is an `htmlwidget` that leverages the upcoming common methods and conventions of `rCharts2` to make interactive plotting easy and consistent.  Many of these ideas evolve from lessons learned with the [`rCharts`](https://github.com/ramnathv/rCharts) package from [Ramnath Vaidyanathan](https://github.com/ramnathv) who also authored much of the `htmlwidgets` package.  Also, you might notice some bits and pieces of goodness from `lattice`, `ggplot2`, and base `graphics`.  For a nearly complete set of examples from the [dimple examples](http://dimplejs.org/examples_index.html), do `demo(dimple)`.
 
 
 ### Examples with r-graph-gallery
@@ -122,9 +122,12 @@ my_data %>>%
 library(curl)
 library(reshape2)
 my_data_wide <- read.delim(
-  curl(
-    "https://raw.githubusercontent.com/jennybc/r-graph-catalog/master/figures/fig02-14_playfair-s-balance-of-trade-data/fig02-14_playfair-s-balance-of-trade-data.tsv"
-  )
+  curl(paste0(
+    "https://raw.githubusercontent.com/jennybc/"
+    ,"r-graph-catalog/master/figures/"
+    ,"fig02-14_playfair-s-balance-of-trade-data/"
+    ,"fig02-14_playfair-s-balance-of-trade-data.tsv"
+  ))
 )
 
 # convert my_data into long format
