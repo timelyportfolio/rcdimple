@@ -155,6 +155,17 @@ HTMLWidgets.widget({
         }
         */
         
+        //for measure axis dimple sorts at the series level not at axis level
+        ['x','y'].map(function(ax){
+          if( layer[ax + 'Axis'].type=="addMeasureAxis" && layer[ax + 'Axis'].orderRule ){
+            if( typeof layer[ax + 'Axis'].orderRule == "string" ){
+              s.addOrderRule( layer[ax + 'Axis'].orderRule );
+            } else if ( typeof layer[ax + 'Axis'].orderRule == "object" ) {
+              s._orderRules = layer[ax + 'Axis'].orderRule;
+            }
+          }
+        })
+        
         if(layer.hasOwnProperty("groups")) {
           s.categoryFields = (typeof layer.groups === "object") ? layer.groups : [layer.groups];
           //series offers an aggregate method that we will also need to check if available
@@ -342,6 +353,18 @@ HTMLWidgets.widget({
         
         //add facet row and column in case we need later
         subChart.facetposition = cell.values;
+        
+        // undocumented hook to run last minute chart code
+        //  allow functions using htmlwidgets::JS
+        if( typeof opts.chart !== "undefined" ) {
+          if( opts.chart.length == 0 ) opts.chart = [opts.chart]
+          opts.chart.forEach(function(c){
+            if(typeof c == "function"){
+              // function should return an altered chart
+              subChart = c.call(subChart);
+            }
+          })
+        }
         
         subCharts.push(subChart);
       })
