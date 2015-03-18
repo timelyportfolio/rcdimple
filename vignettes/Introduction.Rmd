@@ -24,11 +24,13 @@ knitr::opts_chunk$set(
 )
 ```
 
-Vignettes are long form documentation commonly included in packages. Because they are part of the distribution of the package, they need to be as compact as possible. The `html_vignette` output type provides a custom style sheet (and tweaks some options) to ensure that the resulting html is as small as possible. The `html_vignette` format:
+### Introduction to `rcdimple`
+`rcdimple` is an `htmlwidget` that leverages the upcoming common methods and conventions of `rCharts2` to make interactive plotting easy and consistent.  Many of these ideas evolve from lessons learned with the [`rCharts`](https://github.com/ramnathv/rCharts) package from [Ramnath Vaidyanathan](https://github.com/ramnathv) who also authored much of the `htmlwidgets` package.  Also, you might notice some bits and pieces of goodness from `lattice`, `ggplot2`, and base `graphics`.
 
-- Never uses retina figures
-- Has a smaller default figure size
-- Uses a custom CSS stylesheet instead of the default Twitter Bootstrap style
+
+### Examples with r-graph-gallery
+
+As a quick introduction to `rcdimple`, let's use `rcdimple` to make some of the plots from [r-graph-catalog](http://shinyapps.stat.ubc.ca/r-graph-catalog/) by Joanna Zhao and [Jennifer Bryan](http://www.stat.ubc.ca/~jenny/) which recreates most of the plots in  [“Creating More Effective Graphs”](http://www.amazon.com/Creating-Effective-Graphs-Naomi-Robbins/dp/0985911123) by [Naomi Robbins](http://www.nbr-graphs.com/).  Yes, this is a reproduction of a reproduction, but it should be insightful.  We'll concentrate on those graphs tagged as "good graphs", and if successful lines of code to create these interactive versions will be <= lines of code to make the `ggplot2` versions.
 
 ```{r}
 # try to do some examples with rcdimple
@@ -160,6 +162,11 @@ my_data_long %>>%
   add_title("Fig 2.14 Playfair's Balance-of-Trade Data") %>>%
 ~d2_14
 
+```
+
+Now, you might notice no labels and arrows.  While it is possible, I'll separate it out since it is not nearly as clean and easy as it should be.  Hopefully, this will get easier and easier.
+
+```{r}
 d2_14$x$options$tasks <- list(htmlwidgets::JS('
   function(){
     //this.widgetDimple should hold our chart
@@ -191,6 +198,8 @@ d2_14$x$options$tasks <- list(htmlwidgets::JS('
 '))
 d2_14
 ```
+
+`htmlwidgets` are composeable, so we can make fig2.15 fairly easily with some help from [`htmltools`](https://github.com/rstudio/htmltools).
 
 ````{r}
 ####fig2.15####
