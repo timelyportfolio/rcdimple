@@ -4,7 +4,7 @@
 \alias{dimple}
 \title{Plot R data with dimple}
 \usage{
-dimple(data, x, type = type, y = NULL, z = NULL, groups = NULL,
+dimple(data, x, type = "bubble", y = NULL, z = NULL, groups = NULL,
   group = NULL, storyboard = NULL, ..., pipe = F, width = NULL,
   height = NULL, elementId = NULL)
 }

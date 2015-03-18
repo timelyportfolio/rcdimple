@@ -26,7 +26,7 @@
 #' @export
 #' @import htmltools
 #' @import htmlwidgets
-dimple <- function( data, x, type = type
+dimple <- function( data, x, type = "bubble"
   , y = NULL, z = NULL, groups = NULL, group = NULL, storyboard = NULL
   , ...
   , pipe = F, width = NULL, height = NULL, elementId = NULL) {
