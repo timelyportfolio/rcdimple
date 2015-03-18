@@ -1,13 +1,28 @@
 ---
-title: "Vignette Title"
-author: "Vignette Author"
+title: "r-graph-catalog with `rcdimple`"
+author: "Kent Russell"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteIndexEntry{Introduction to rcdimple}
   %\VignetteEngine{knitr::rmarkdown}
   \usepackage[utf8]{inputenc}
 ---
+
+```{r echo=F}
+### get knitr just the way we like it
+
+knitr::opts_chunk$set(
+  message = FALSE
+  , warning = FALSE
+  , error = FALSE
+  , tidy = FALSE
+  , cache = FALSE
+  #, results = 'asis'
+  , fig.width = 8
+  , fig.height = 4
+)
+```
 
 Vignettes are long form documentation commonly included in packages. Because they are part of the distribution of the package, they need to be as compact as possible. The `html_vignette` output type provides a custom style sheet (and tweaks some options) to ensure that the resulting html is as small as possible. The `html_vignette` format:
 
@@ -15,44 +30,204 @@ Vignettes are long form documentation commonly included in packages. Because the
 - Has a smaller default figure size
 - Uses a custom CSS stylesheet instead of the default Twitter Bootstrap style
 
-## Vignette Info
+```{r}
+# try to do some examples with rcdimple
+#   use
+#    http://shinyapps.stat.ubc.ca/r-graph-catalog/
+#    https://github.com/jennybc/r-graph-catalog
 
-Note the various macros within the `vignette` setion of the metadata block above. These are required in order to instruct R how to build the vignette. Note that you should change the `title` field and the `\VignetteIndexEntry` to match the title of your vignette.
+#devtools::install_github("timelyportfolio/rcdimple")
 
-## Styles
-
-The `html_vignette` template includes a basic CSS theme. To override this theme you can specify your own CSS in the document metadata as follows:
-
-    output: 
-      rmarkdown::html_vignette:
-        css: mystyles.css
-
-## Figures
-
-The figure sizes have been customised so that you can easily put two images side-by-side. 
-
-```{r, fig.show='hold'}
-plot(1:10)
-plot(10:1)
+library(rcdimple)
+library(pipeR)  #could use magrittr if you like that better
 ```
 
-You can enable figure captions by `fig_caption: yes` in YAML:
+```{r}
+####figure1.2####
+my_data <- data.frame(
+  variable = c("A", "B", "C", "D", "E"),
+  value = c(23, 22, 19.5, 18.5, 17))
 
-    output:
-      rmarkdown::html_vignette:
-        fig_caption: yes
-
-Then you can use the chunk option `fig.cap = "Your figure caption."` in **knitr**.
-
-## More Examples
-
-You can write math expressions, e.g. $Y = X\beta + \epsilon$, footnotes^[A footnote here.], and tables, e.g. using `knitr::kable()`.
-
-```{r, echo=FALSE, results='asis'}
-knitr::kable(head(mtcars, 10))
+my_data %>>%
+  dimple( variable ~ value, type = "bubble" ) %>>%
+  xAxis( type = "addMeasureAxis", hidden = TRUE, ticks = 1, title = ""  ) %>>%
+  yAxis(
+    type = "addCategoryAxis"
+    , orderRule = rev(as.character( my_data$variable ) )
+    , showGridlines = T
+  ) %>>%
+  default_colors( gray.colors(2) ) %>>%
+  add_title( "Fig 1.2 Similar Pie Wedges: Dot Plot")
 ```
 
-Also a quote using `>`:
+```{r}
+####figure2.2####
+my_data <- data.frame(
+  variable = factor(paste("Item", 1:10), levels = paste("Item", 1:10)),
+  value = c(7.0, 12.0, 8.0, 13.0, 7.5, 12.5, 8.5, 13.5, 6.5, 11.5)/100)
 
-> "He who gives up [code] safety for [code] speed deserves neither."
-([via](https://twitter.com/hadleywickham/status/504368538874703872))
+my_data %>>%
+  dimple( variable ~ value, type = "bubble" ) %>>%
+  xAxis( type = "addMeasureAxis", title = "" ) %>>%
+  yAxis(
+    type = "addCategoryAxis"
+    , title = ""
+    , orderRule = levels(my_data$variable)
+    , showGridlines = T
+  ) %>>%
+  default_colors( gray.colors(2) ) %>>%
+  add_title( "Fig 2.2 Structured Data Set: Dot Plot" )
+```
+
+```{r}
+####figure2.4####
+my_data <- data.frame(
+  variable = c("A", "B", "C", "D"),
+  value = c(0.2, 0.2, 0.2, 0.4))
+
+my_data %>>%
+  dimple( x = "variable", y = "value", type = "bar"  ) %>>%
+  xAxis( orderRule = "variable" ) %>>%
+  default_colors( gray.colors(4)[2:3] ) %>>%
+  add_title( html =
+   "<div style='text-align:center;width:100%'>
+      <b style = 'font-size:130%;'>Fig 2.4 Three Dimensinal Pie Data:<br/>
+        Two Dimensional Bar Chart
+      </b>
+    </div>"
+  )
+```
+
+```{r}
+####figure2.12####
+my_data <- data.frame(
+  year = factor(77:86),
+  us = c(1320, 1280, 1350, 1400, 1470, 1420, 1440, 1580, 1520, 1610),
+  japan = c(405, 405, 480, 500, 490, 495, 480, 480, 500, 530),
+  germany = c(220, 225, 290, 320, 300, 280, 260, 240, 220, 225),
+  other = c(1280, 1195, 1310, 1390, 1270, 1200, 1100, 1100, 1040, 1080))
+
+my_data %>>%
+  dimple( other~year, type = "bar" ) %>>%
+  xAxis( title = "Year" ) %>>%
+  yAxis( outputFormat = ",.0f", title = "Millions of Gallons" ) %>>%
+  default_colors( gray.colors(4)[2:3] ) %>>%
+  add_title( "Fig 2.12 Energy Data: All Other OECD" )
+```
+
+```{r}
+####figure2.14####
+library(curl)
+library(reshape2)
+my_data_wide <- read.delim(
+  curl(
+    "https://raw.githubusercontent.com/jennybc/r-graph-catalog/master/figures/fig02-14_playfair-s-balance-of-trade-data/fig02-14_playfair-s-balance-of-trade-data.tsv"
+  )
+)
+
+# convert my_data into long format
+my_data_long <- melt(
+  my_data_wide
+  , id.vars = "year"
+  , measure.vars = c("exports", "imports")
+  , variable.name = "type"
+  , value.name = "pounds"
+)
+
+my_data_long$year <- paste0(my_data_long$year,"-01-01")
+
+my_data_long %>>%
+  dimple( pounds ~ year, groups = "type", type = "line", width = 768 ) %>>%
+  xAxis(
+    type = "addTimeAxis"
+    , inputFormat = "%Y-%m-%d"
+    , tickFormat = "%Y"
+    , timePeriod = htmlwidgets::JS('d3.time.years')
+    , timeInterval = 20
+    , title = "Year"
+    , showGridlines = TRUE
+    , fontFamily = "monospace"
+    , fontSize = "100%"
+  ) %>>%
+  yAxis(
+    ticks = 4
+    ,title = "Millions of Pounds"
+    , fontFamily = "monospace"
+    , fontSize = "100%"    
+  ) %>>%
+  set_bounds( x = "10%", y = "10%", width = "80%", height = "75%") %>>%
+  default_colors( list("black") ) %>>%
+  add_title("Fig 2.14 Playfair's Balance-of-Trade Data") %>>%
+~d2_14
+
+d2_14$x$options$tasks <- list(htmlwidgets::JS('
+  function(){
+    //this.widgetDimple should hold our chart
+    var chart = this.widgetDimple[0];
+    chart.svg.append("line")
+      .attr("x1",chart.axes[0]._scale(new Date("1720-01-01")))
+      .attr("x2",chart.axes[0]._scale(new Date("1730-01-01")))
+      .attr("y1",chart.axes[1]._scale(1.05))
+      .attr("y2",chart.axes[1]._scale(1))
+      .style("stroke","black")
+    chart.svg.append("text")
+      .attr("x", chart.axes[0]._scale(new Date("1720-01-01")) )
+      .attr("y", chart.axes[1]._scale(1.1) )
+      .attr("text-anchor", "middle")
+      .text("Imports to England")
+    chart.svg.append("line")
+      .attr("x1",chart.axes[0]._scale(new Date("1750-01-01")))
+      .attr("x2",chart.axes[0]._scale(new Date("1760-01-01")))
+      .attr("y1",chart.axes[1]._scale(.65))
+      .attr("y2",chart.axes[1]._scale(.4))
+      .style("stroke","black")
+    chart.svg.append("text")
+      .attr("x", chart.axes[0]._scale(new Date("1760-01-01")) )
+      .attr("y", chart.axes[1]._scale(0.35) )
+      .attr("dy", "0.6em")
+      .attr("text-anchor", "middle")
+      .text("Exports to England")
+  }
+'))
+d2_14
+```
+
+````{r}
+####fig2.15####
+library(htmltools)
+library(dplyr)
+
+tagList(
+  tags$div(
+    d2_14
+    ,dimple(
+      imports_minus_exports ~ year
+      , data = my_data_long %>>%
+        group_by( year ) %>>%
+        mutate( imports_minus_exports = diff( pounds ))
+      , type = "line"
+      , height = "250px"
+      , width = 768
+    ) %>>%
+      xAxis(
+        type = "addTimeAxis"
+        , inputFormat = "%Y-%m-%d"
+        , tickFormat = "%Y"
+        , timePeriod = htmlwidgets::JS('d3.time.years')
+        , timeInterval = 20
+        , title = "Year"
+        , showGridlines = TRUE
+        , fontFamily = "monospace"
+        , fontSize = "100%"
+      ) %>>%
+      yAxis(
+        ticks = 4
+        ,title = "Millions of Pounds"
+        , fontFamily = "monospace"
+        , fontSize = "100%"    
+      ) %>>%
+      set_bounds( x = "10%", y = "5%", width = "80%", height = "60%") %>>%
+      default_colors( list("black") )
+  )
+)
+```
