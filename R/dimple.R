@@ -255,7 +255,7 @@ add_title <- function(viz, text = NULL, html = NULL, ...){
 
 #' @export
 dimpleOutput <- function(outputId, width = "100%", height = "500px"){
-  htmlwidgets::shinyWidgetOutput(outputId, "dimple", width, height, package = 'dimple')
+  htmlwidgets::shinyWidgetOutput(outputId, "dimple", width, height, package = 'rcdimple')
 }
 
 #' @export
