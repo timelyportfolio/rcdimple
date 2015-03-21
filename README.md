@@ -14,7 +14,7 @@ library(rcdimple)
 demo(dimple)
 ```
 
-For additional discussion, see the post [Week 11 | dimple as htmlwidget](www.buildingwidgets.com/blog/2015/3/18/week-11-dimple-as-htmlwidget) announcing this widget at Building Widgets.  Look for many, many more examples in the future.
+For additional discussion, see the post [Week 11 - dimple as htmlwidget](www.buildingwidgets.com/blog/2015/3/18/week-11-dimple-as-htmlwidget) announcing this widget at Building Widgets.  Look for many, many more examples in the future.
 
 ### Waffle Charts with rcdimple
 
