@@ -11,6 +11,8 @@ HTMLWidgets.widget({
   },  
   
   renderValue: function(el, x, instance){
+    d3.select(el).selectAll("*").remove()
+    
     // add title if provided
     if (x.options.title){
       if (x.options.title.html){
