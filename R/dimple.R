@@ -51,6 +51,8 @@ dimple <- function( data, x, type = "bubble"
          groups = groups %||% group, z = z, ...
     ))
     
+    options$data <- NULL
+    
     d <- htmlwidgets::createWidget('dimple', list(options = options, data = data), 
         width = width, height = height
        , package = 'rcdimple'
