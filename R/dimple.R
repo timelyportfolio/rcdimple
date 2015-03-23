@@ -48,7 +48,7 @@ dimple <- function( data, x, type = "bubble"
     options = modifyList(
       options
       , getLayer(x = x, y = y, data = data, type = type, 
-         groups = groups %||% group, z = z, ...
+         groups = groups %||% group, z = z, storyboard = storyboard, ...
     ))
     
     options$data <- NULL
