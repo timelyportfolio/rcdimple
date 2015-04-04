@@ -225,7 +225,13 @@ HTMLWidgets.widget({
         } else {
           axis = myChart[axisopts.type](position, layer[position]);
         };
-        if(!(axisopts.type === "addPctAxis")) axis.showPercent = axisopts.showPercent;
+        
+        if (axisopts.type === "addPctAxis") {
+          axis.showPercent = true;
+        } else {
+          axis.showPercent = false;
+        }
+        
         if (axisopts.orderRule) axis.addOrderRule(axisopts.orderRule);
         if (axisopts.grouporderRule) axis.addGroupOrderRule(axisopts.grouporderRule);  
         if (axisopts.inputFormat) axis.dateParseFormat = axisopts.inputFormat;

@@ -34,8 +34,8 @@ dimple <- function( data, x, type = "bubble"
     # set up defaults for missing params
     options = list(
       chart = list(),
-      xAxis = list(type="addCategoryAxis", showPercent = FALSE),
-      yAxis = list(type="addMeasureAxis", showPercent = FALSE),
+      xAxis = list(type="addCategoryAxis"),
+      yAxis = list(type="addMeasureAxis"),
       zAxis = if(is.null(z)) { list() } else { list(type = "addMeasureAxis") },
       colorAxis = list(),
       defaultColors = list(),
