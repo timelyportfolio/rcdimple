@@ -17,7 +17,8 @@ Maintainer: Kenton Russell <kent.russell@timelyportfolio.com>
 Description: Provides easy access to the dimple d3.js plotting library in the form
                 of an htmlwidget.
 Depends: R (>= 3.1.2),
-    htmlwidgets
+    htmlwidgets,
+    htmltools
 License: MIT + file LICENSE
 LazyData: true
 Suggests: knitr,
