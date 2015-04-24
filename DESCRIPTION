@@ -19,7 +19,7 @@ Description: Provides easy access to the dimple d3.js plotting library in the fo
 Depends: R (>= 3.1.2)
 License: MIT + file LICENSE
 LazyData: true
+Imports: htmlwidgets
 Suggests: knitr,
     testthat
 VignetteBuilder: knitr
-Imports: htmlwidgets
