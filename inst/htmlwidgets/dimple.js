@@ -120,10 +120,10 @@ HTMLWidgets.widget({
         if (!layer.zAxis) layer.zAxis = opts.zAxis;
         
         var x = buildAxis("x", layer, myChart);
-        x.hidden = hidden;
+        x.hidden = hidden || layer.xAxis.hidden ;
         
         var y = buildAxis("y", layer, myChart);
-        y.hidden = hidden;
+        y.hidden = hidden || layer.yAxis.hidden ;
         
         //z for bubbles
         var z = null;
