@@ -10,4 +10,4 @@ dependencies:
   - name: dimple
     version: 2.1.2
     src: "htmlwidgets/lib/dimple"
-    script: "dimple.min.js"    
+    script: "dimple.min.js"
