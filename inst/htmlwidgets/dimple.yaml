@@ -8,6 +8,6 @@ dependencies:
     src: "htmlwidgets/lib/d3-grid"
     script: "d3-grid.js"
   - name: dimple
-    version: 2.1.2
+    version: 2.1.6
     src: "htmlwidgets/lib/dimple"
-    script: "dimple.min.js"
+    script: "dimple.js"

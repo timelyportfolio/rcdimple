@@ -3,22 +3,22 @@
 }
 
 .dimple-custom-axis-label{ 
-  font-size: 1.15em        !important;
-  color: #564a55           !important;  
+  font-size: 1.15em;
+  color: #564a55;  
 }
 
 .dimple-custom-axis-title{ 
-  font-size: 0.85em        !important;
-  color: #564a55           !important;
+  font-size: 0.85em;
+  color: #564a55;
 }
 
 .dimple-custom-tooltip-box{
-  stroke: none             !important;
-  opacity: 0.8              !important;
+  stroke: none;
+  opacity: 0.8;
 }
 
 .dimple-custom-tooltip-label{ 
-  font-size: 0.75em         !important;
+  font-size: 0.75em;
 }
 
 .dimple-custom-line-marker{
@@ -55,11 +55,11 @@
 }
 
 .dimple-custom-gridline, .dimple-custom-axis-line {
-  stroke: #D0D0E0       !important;
-  stroke-width: 0.08em  !important;
-  fill: none            !important;
+  stroke: #D0D0E0;
+  stroke-width: 0.08em;
+  fill: none;
 }
 
 .dimple-custom-gridline {
-  stroke-dasharray: 0.2em, 0.2em   !important;
+  stroke-dasharray: 0.2em, 0.2em;
 }
