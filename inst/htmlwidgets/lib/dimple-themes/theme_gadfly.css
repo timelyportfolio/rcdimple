@@ -1,0 +1,64 @@
+.dimple-custom-axis-line {
+
+}
+
+.dimple-custom-axis-label{ 
+  font-size: 1.15em        !important;
+  color: #564a55           !important;  
+}
+
+.dimple-custom-axis-title{ 
+  font-size: 0.85em        !important;
+  color: #564a55           !important;
+}
+
+.dimple-custom-tooltip-box{
+
+}
+
+.dimple-custom-tooltip-label{ 
+
+}
+
+.dimple-custom-line-marker{
+
+}
+
+.dimple-custom-legend-label{
+
+}
+
+.dimple-custom-legend-key{
+
+}
+
+.dimple-custom-series-area{ 
+
+}
+
+.dimple-custom-series-bar{
+
+}
+
+.dimple-custom-series-bubble{
+  stroke-width: 0.3px;
+}
+
+.dimple-custom-series-line{ 
+  stroke-width: 0.3mm;
+
+}
+
+.dimple-custom-series-pie{
+
+}
+
+.dimple-custom-gridline, .dimple-custom-axis-line {
+  stroke: #D0D0E0       !important;
+  stroke-width: 0.08em  !important;
+  fill: none            !important;
+}
+
+.dimple-custom-gridline {
+  stroke-dasharray: 0.2em, 0.2em   !important;
+}
