@@ -1,13 +1,15 @@
 library(rcdimple)
 library(pipeR)
 
-data.frame(x = 1:10, y = 1:10) %>>%
+data.frame(x = 1:10, y = 1:10, groups = letters[round(runif(10,1,5))]) %>>%
   dimple( 
     y ~ x
+    ,groups = "groups"
     ,type = "bubble"
   ) %>>%
   xAxis (showGridlines = TRUE) %>>%
-  yAxis (showGridlines = TRUE) -> d1
+  yAxis (showGridlines = TRUE) %>>% 
+  default_colors ( c("#00BFFF","#D4CA3A","#FF5EA0","#00E5B2","#F6A6FF") ) -> d1
 
 d1$dependencies = list(htmlDependency(
   name = "dimple-gadfly"
@@ -27,9 +29,20 @@ function(){
 
 d1
 
+d2 <- data.frame(HairEyeColor) %>>%
+   dimple(
+     y = "Freq"
+     , x = "Hair"
+     , groups = "Eye"
+     , type = "line"
+   ) %>>%
+     default_colors ( c("#00BFFF","#D4CA3A","#FF5EA0","#00E5B2","#F6A6FF") )
 
+d2$dependencies = list(htmlDependency(
+  name = "dimple-gadfly"
+  ,version = "0.1.0"
+  ,src = c(file=system.file("htmlwidgets/lib/dimple-themes",package="rcdimple"))
+  ,stylesheet = "theme_gadfly.css"
+))
 
-default_stroke_color <- function (fill_color=NA) {
-  if (is.na (fill_color)) fill_color <- polarLab(70, 60, 240)
-  polarLab(fill_color.L - 15, fill_color.C, fill_color.H)
-}
+d2
