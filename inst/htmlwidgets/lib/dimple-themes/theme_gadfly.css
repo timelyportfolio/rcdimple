@@ -13,11 +13,12 @@
 }
 
 .dimple-custom-tooltip-box{
-
+  stroke: none             !important;
+  opacity: 0.8              !important;
 }
 
 .dimple-custom-tooltip-label{ 
-
+  font-size: 0.75em         !important;
 }
 
 .dimple-custom-line-marker{
