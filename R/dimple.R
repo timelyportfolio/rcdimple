@@ -259,6 +259,16 @@ add_title <- function(viz, text = NULL, html = NULL, ...){
   return(viz)
 }
 
+#' Add a series to your dimple chart
+#' @param viz \code{rCharts2} chart to which you would like to add a series
+#' 
+#' @export
+add_series <- function(viz, ...)
+{
+  viz$x$options$layers[[length(viz$x$options$layers) + 1]] <- list(...)
+  return(viz)
+}
+
 #' @export
 dimpleOutput <- function(outputId, width = "100%", height = "500px"){
   htmlwidgets::shinyWidgetOutput(outputId, "dimple", width, height, package = 'rcdimple')
