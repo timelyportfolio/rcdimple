@@ -41,8 +41,10 @@ ex_data %>%
   )
   
 # more testing
+mtcars$name <- rownames(mtcars)
 mtcars %>%
   dimple(mpg ~ cyl, type = "bar", groups = "cyl") %>%
+  add_series(x = "cyl", y = "mpg", type = "line" ) %>%
   # hidden = FALSE so we can compare
-  add_series(x = "cyl", y = "mpg", type = "bubble", groups = "cyl", yAxis = list(hidden=FALSE) ) %>%
-  add_series(x = "cyl", y = "mpg", type = "line" )
+  add_series(x = "cyl", y = "mpg", groups = "name", type = "bubble") %>%
+  add_series(x = "cyl", y = "mpg", groups = "cyl", type = "bubble", yAxis = list(hidden=FALSE))  
