@@ -31,8 +31,8 @@ dimple( weight ~ Time, groups = "Diet" , type = "line", data = ChickWeight, widt
 \seealso{
 Other dimple: \code{\link{add_title}};
   \code{\link{default_colors}}; \code{\link{dimple}};
-  \code{\link{facet.dimple}}; \code{\link{set_bounds}};
+  \code{\link{facet.dimple}}; \code{\link{pAxis.dimple}},
   \code{\link{xAxis.dimple}}, \code{\link{yAxis.dimple}},
-  \code{\link{zAxis.dimple}}
+  \code{\link{zAxis.dimple}}; \code{\link{set_bounds}}
 }
 

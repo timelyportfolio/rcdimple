@@ -27,7 +27,7 @@
 #' @import htmltools
 #' @import htmlwidgets
 dimple <- function( data, x, type = "bubble"
-  , y = NULL, z = NULL, groups = NULL, group = NULL, storyboard = NULL
+  , y = NULL, z = NULL, p = NULL, groups = NULL, group = NULL, storyboard = NULL
   , ...
   , pipe = F, width = NULL, height = NULL, elementId = NULL) {
   
@@ -37,6 +37,7 @@ dimple <- function( data, x, type = "bubble"
       xAxis = list(type="addCategoryAxis"),
       yAxis = list(type="addMeasureAxis"),
       zAxis = if(is.null(z)) { list() } else { list(type = "addMeasureAxis") },
+      pAxis = if(is.null(p)) { list() } else { list(type = "addMeasureAxis") },
       colorAxis = list(),
       defaultColors = list(),
       layers = list(),
@@ -48,7 +49,7 @@ dimple <- function( data, x, type = "bubble"
     options = modifyList(
       options
       , getLayer(x = x, y = y, data = data, type = type, 
-         groups = groups %||% group, z = z, storyboard = storyboard, ...
+         groups = groups %||% group, z = z, p = p, storyboard = storyboard, ...
     ))
     
     options$data <- NULL
@@ -119,7 +120,7 @@ yAxis.dimple <- function(viz, ...){
   return(viz)
 }
 
-#' Modify plot elements that relate to the x-axis.
+#' Modify plot elements that relate to the z-axis.
 #' 
 #' This is an S3 method.
 #' @family axis
@@ -132,6 +133,22 @@ zAxis <- function(x, ...){
 #' @export
 zAxis.dimple <- function(viz, ...){
   viz$x$options$zAxis = modifyList(viz$x$options$zAxis, list(...))
+  return(viz)
+}
+
+#' Modify plot elements that relate to the p-axis.
+#' 
+#' This is an S3 method.
+#' @family axis
+#' @export
+pAxis <- function(x, ...){
+  UseMethod('pAxis')
+}
+
+#' @rdname xAxis.dimple
+#' @export
+pAxis.dimple <- function(viz, ...){
+  viz$x$options$pAxis = modifyList(viz$x$options$pAxis, list(...))
   return(viz)
 }
 

@@ -4,9 +4,9 @@
 \alias{dimple}
 \title{Plot R data with dimple}
 \usage{
-dimple(data, x, type = "bubble", y = NULL, z = NULL, groups = NULL,
-  group = NULL, storyboard = NULL, ..., pipe = F, width = NULL,
-  height = NULL, elementId = NULL)
+dimple(data, x, type = "bubble", y = NULL, z = NULL, p = NULL,
+  groups = NULL, group = NULL, storyboard = NULL, ..., pipe = F,
+  width = NULL, height = NULL, elementId = NULL)
 }
 \arguments{
 \item{data}{a \code{\link[base]{data.frame}} with the data to plot}
@@ -46,8 +46,8 @@ Use \href{http://dimplejs.org}{Dimple} with this \code{htmlwidget}.  Dimple is a
 \seealso{
 Other dimple: \code{\link{add_legend}};
   \code{\link{add_title}}; \code{\link{default_colors}};
-  \code{\link{facet.dimple}}; \code{\link{set_bounds}};
+  \code{\link{facet.dimple}}; \code{\link{pAxis.dimple}},
   \code{\link{xAxis.dimple}}, \code{\link{yAxis.dimple}},
-  \code{\link{zAxis.dimple}}
+  \code{\link{zAxis.dimple}}; \code{\link{set_bounds}}
 }
 

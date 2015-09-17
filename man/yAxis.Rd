@@ -10,8 +10,9 @@ yAxis(x, ...)
 This is an S3 method.
 }
 \seealso{
-Other axis: \code{\link{xAxis.dimple}},
-  \code{\link{yAxis.dimple}}, \code{\link{zAxis.dimple}};
+Other axis: \code{\link{pAxis.dimple}},
+  \code{\link{xAxis.dimple}}, \code{\link{yAxis.dimple}},
+  \code{\link{zAxis.dimple}}; \code{\link{pAxis}};
   \code{\link{zAxis}}
 }
 

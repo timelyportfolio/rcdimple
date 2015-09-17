@@ -131,10 +131,16 @@ HTMLWidgets.widget({
           z = buildAxis("z", layer, myChart);
         };
         
+        //p for pies
+        var p = null;
+        if (!(typeof(layer.pAxis) === 'undefined') && layer.pAxis.type){
+          p = buildAxis("p", layer, myChart);
+        };
+        
         //here think I need to evaluate group and if missing do null
         //as the group argument
         //if provided need to use groups from layer
-        var s = new dimple.series(myChart, null, x, y, z, c, null, dimple.plot[layer.type], dimple.aggregateMethod.avg, dimple.plot[layer.type].stacked);
+        var s = new dimple.series(myChart, null, x, y, z, c, p, dimple.plot[layer.type], dimple.aggregateMethod.avg, dimple.plot[layer.type].stacked);
         
         //as of v1.1.4 dimple can use different dataset for each series
         // facets not currently working with layer data; need to change structure
@@ -188,6 +194,9 @@ HTMLWidgets.widget({
         if (!(typeof(layer.interpolation) === 'undefined')) {
           s.interpolation = layer.interpolation;
         }     
+        if (!(typeof(layer.radius) === 'undefined')) {
+          s.radius = layer.radius;
+        }             
        /* if (!(typeof(layer.eventHandler) === 'undefined')) {
           layer.eventHandler = (layer.eventHandler.length === "undefined") ? layer.eventHandler : [layer.eventHandler];
           layer.eventHandler.forEach(function(evt){
