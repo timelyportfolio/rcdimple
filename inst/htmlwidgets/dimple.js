@@ -232,7 +232,17 @@ HTMLWidgets.widget({
           axis.showPercent = false;
         }
         
-        if (axisopts.orderRule) axis.addOrderRule(axisopts.orderRule);
+        if (axisopts.orderRule){
+          // handle if object with desc specified
+          if(typeof(axisopts.orderRule) == "string" || 
+                Array.isArray(axisopts.orderRule)) {
+            axis.addOrderRule(axisopts.orderRule);
+          } else {
+            if(typeof(axisopts.orderRule) == "object"){
+              axis.addOrderRule(axisopts.orderRule.ordering,axisopts.orderRule.desc);
+            }
+          }
+        } 
         if (axisopts.grouporderRule) axis.addGroupOrderRule(axisopts.grouporderRule);  
         if (axisopts.inputFormat) axis.dateParseFormat = axisopts.inputFormat;
         if (axisopts.outputFormat) axis.tickFormat = axisopts.outputFormat;        

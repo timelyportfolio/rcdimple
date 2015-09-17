@@ -17,9 +17,13 @@
 
 \item{type}{"addMeasureAxis", "addCategoryAxis", "addTimeAxis", or "addPctAxis"}
 
-\item{orderRule}{defines how to sort a categorical axis.  \code{orderRule} can either be a field name as a string or a vector of values in the desired order.}
+\item{orderRule}{defines how to sort a categorical axis.  \code{orderRule} can either be a field name as a string or a vector of values in the desired order.
+\code{desc} is by default \code{FALSE}.  To change \code{desc} to true, use a list for this argument in the following form
+\code{list(ordering = "SalesValue", desc = TRUE)}.}
 
-\item{grouporderRule}{defines how to the values in a group.  \code{orderRule} can either be a field name as a string or a vector of values in the desired order.}
+\item{grouporderRule}{defines how to the values in a group.  \code{orderRule} can either be a field name as a string or a vector of values in the desired order.
+\code{desc} is by default \code{FALSE}.  To change \code{desc} to true, use a list for this argument in the following form
+\code{list(ordering = "SalesValue", desc = TRUE)}.}
 
 \item{overrideMin}{manually specify a minimum axis value.  See \href{https://github.com/PMSI-AlignAlytics/dimple/wiki/dimple.axis#overrideMin}{dimple.axis.overrrideMin}.}
 

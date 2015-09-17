@@ -77,7 +77,11 @@ xAxis <- function(x, ...){
 #' 
 #' @param type "addMeasureAxis", "addCategoryAxis", "addTimeAxis", or "addPctAxis"
 #' @param orderRule defines how to sort a categorical axis.  \code{orderRule} can either be a field name as a string or a vector of values in the desired order.
+#'          \code{desc} is by default \code{FALSE}.  To change \code{desc} to true, use a list for this argument in the following form
+#'          \code{list(ordering = "SalesValue", desc = TRUE)}.
 #' @param grouporderRule defines how to the values in a group.  \code{orderRule} can either be a field name as a string or a vector of values in the desired order.
+#'          \code{desc} is by default \code{FALSE}.  To change \code{desc} to true, use a list for this argument in the following form
+#'          \code{list(ordering = "SalesValue", desc = TRUE)}.
 #' @param overrideMin manually specify a minimum axis value.  See \href{https://github.com/PMSI-AlignAlytics/dimple/wiki/dimple.axis#overrideMin}{dimple.axis.overrrideMin}.
 #' @param overrideMax manually specify a maximum axis value.  See \href{https://github.com/PMSI-AlignAlytics/dimple/wiki/dimple.axis#overrideMax}{dimple.axis.overrrideMax}.
 #' @param inputFormat the d3 time format of the values in a field if an axis is \code{addTimeAxis}.  See \href{https://github.com/PMSI-AlignAlytics/dimple/wiki/dimple.axis#dateParseFormat}{dimple.axis.dateParseFormat}.
