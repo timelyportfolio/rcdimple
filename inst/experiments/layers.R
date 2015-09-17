@@ -16,7 +16,8 @@ ex_data %>%
   filter(Channel=="Hypermarkets") %>%
   dimple(
     SalesValue ~ Brand,
-    type = "bar"
+    type = "bar",
+    storyboard = "Date"
   ) %>%
   xAxis(orderRule = list(ordering = "SalesValue",desc=TRUE)) %>%
   add_series(
@@ -39,3 +40,7 @@ ex_data %>%
     aggregate = "dimple.aggregateMethod.max"
   )
   
+# more testing
+mtcars %>%
+  dimple(mpg ~ cyl, type = "line") %>%
+  add_series(x = "cyl", y = "mpg", type = "bubble", yAxis = list(hidden=FALSE) )
