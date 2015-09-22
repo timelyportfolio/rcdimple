@@ -48,3 +48,12 @@ mtcars %>%
   # hidden = FALSE so we can compare
   add_series(x = "cyl", y = "mpg", groups = "name", type = "bubble") %>%
   add_series(x = "cyl", y = "mpg", groups = "cyl", type = "bubble")  
+
+# try it with facets
+mtcars %>%
+  dimple(mpg ~ cyl, type = "bar", groups = "cyl") %>%
+  facet(x="gear",removeAxes= TRUE) %>%
+  add_series(x = "cyl", y = "mpg", type = "line", yAxis = list(hidden=FALSE) ) %>%
+  # hidden = FALSE so we can compare
+  add_series(x = "cyl", y = "mpg", groups = "name", type = "bubble") %>%
+  add_series(x = "cyl", y = "mpg", groups = "cyl", type = "bubble")
