@@ -230,7 +230,7 @@ facet.dimple <- function(viz, x = NULL, y = NULL, removeAxes = F){
 #' @examples
 #' ChickWeight %>%
 #'   dimple( weight ~ Time, groups = "Diet", type = "bubble", width = 600, height = 600 ) %>%
-#'   setBounds( x = 200, y = 100, width = 250, height = 300 )
+#'   set_bounds( x = 200, y = 100, width = 250, height = 300 )
 #' 
 #' @family dimple
 #' @export
