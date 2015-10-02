@@ -189,7 +189,7 @@ add_legend <- function(viz, ...){
 #'   
 #' ChickWeight %>%
 #'   dimple( x = c("Time", "Diet"), y = "weight", groups = "Diet", type = "bar" ) %>%
-#'   defaultColors( htmlwidgets::JS( 'd3.scale.category10()' ) )
+#'   default_colors( htmlwidgets::JS( 'd3.scale.category10()' ) )
 #'   
 #'
 #' @family dimple
