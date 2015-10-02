@@ -210,7 +210,7 @@ add_legend <- function(viz, ...){
 #'   
 #' ChickWeight %>%
 #'   dimple( x = c("Time", "Diet"), y = "weight", groups = "Diet", type = "bar" ) %>%
-#'   defaultColors( htmlwidgets::JS( 'd3.scale.category10()' ) )
+#'   default_colors( htmlwidgets::JS( 'd3.scale.category10()' ) )
 #'   
 #'
 #' @family dimple
@@ -251,7 +251,7 @@ facet.dimple <- function(viz, x = NULL, y = NULL, removeAxes = F){
 #' @examples
 #' ChickWeight %>%
 #'   dimple( weight ~ Time, groups = "Diet", type = "bubble", width = 600, height = 600 ) %>%
-#'   setBounds( x = 200, y = 100, width = 250, height = 300 )
+#'   set_bounds( x = 200, y = 100, width = 250, height = 300 )
 #' 
 #' @family dimple
 #' @export
