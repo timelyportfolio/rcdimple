@@ -793,7 +793,7 @@ df <- data.frame(
 dimple(
   y ~ x,  #x ~ id for a different look
   groups = c("id","sample"),
-  data = df[,c("id","x","y")],  #specify columns to prove diff data
+  data = df,
   type = "bubble"
 ) %>%
   xAxis(type="addMeasureAxis",orderRule="x") -> d1
@@ -803,20 +803,28 @@ d1
 #now add a layer with a line to represent normal distribution
 #! note: this is buggy with Chrome, but works in IE (don't hear that often)
 # will eventually add full layer integration for dimple
-d1$x$options$layers = list(list(
-  x = "x",
-  y = "normref",
-  groups = c("id","sample"),
-  data=df[,c("id","x","normref")],  #specify columns to prove diff data
-  type="line"
-))
+d1 %>%
+  add_series(
+    x = "x",
+    y = "normref",
+    groups = c("id", "sample"),
+    type = "line",
+    yAxis = list(hidden = FALSE)
+  )
+
 # layers don't line up
 # for now to make it work, need overrideMin and overrideMax
 d1 %>% 
   yAxis(
     overrideMin = min(df$y), overrideMax = max(df$y), outputFormat = "0.2f"
   ) %>%
-  xAxis( overrideMin = 0, overrideMax = 1)
+  add_series(
+    x = "x",
+    y = "normref",
+    groups = c("id", "sample"),
+    type = "line",
+    yAxis = list(hidden = FALSE)
+  )
 
 
 
