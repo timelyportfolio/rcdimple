@@ -79,7 +79,7 @@ HTMLWidgets.widget({
           }
         } else {
           // if here then should be an array of hex colors
-          defaultColorsArray = opts.defaultColors; 
+          defaultColorsArray = Array.isArray(opts.defaultColors) ? opts.defaultColors: [opts.defaultColors]; 
           
           
           // just get the first 6 characters of hex color
