@@ -119,11 +119,26 @@ HTMLWidgets.widget({
         if (!layer.yAxis) layer.yAxis = opts.yAxis;
         if (!layer.zAxis) layer.zAxis = opts.zAxis;
         
-        var x = buildAxis("x", layer, myChart);
-        x.hidden = hidden && (typeof(layer.xAxis.hidden) === "undefined" ? true : false);
         
-        var y = buildAxis("y", layer, myChart);
-        y.hidden = hidden && (typeof(layer.yAxis.hidden) === "undefined" ? true : false);
+        var x = {}, y = {};
+        
+        if(layer.xAxis.useAxis) {
+          x = myChart.axes.filter(function(ax){
+            return ax.name === layer.xAxis.useAxis;
+          })[0]
+        } else {
+          x = buildAxis("x", layer, myChart);
+          x.hidden = hidden && (typeof(layer.xAxis.hidden) === "undefined" ? true : false);
+        }
+        
+        if(layer.yAxis.useAxis) {
+          y = myChart.axes.filter(function(ax){
+            return ax.name === layer.yAxis.useAxis;
+          })[0]
+        } else {
+          y = buildAxis("y", layer, myChart);
+          y.hidden = hidden && (typeof(layer.yAxis.hidden) === "undefined" ? true : false);
+        }
         
         //z for bubbles
         var z = null;
@@ -140,7 +155,14 @@ HTMLWidgets.widget({
         //here think I need to evaluate group and if missing do null
         //as the group argument
         //if provided need to use groups from layer
-        var s = new dimple.series(myChart, null, x, y, z, c, p, dimple.plot[layer.type], dimple.aggregateMethod.avg, dimple.plot[layer.type].stacked);
+        var s = new dimple.series(
+          myChart,
+          null,
+          x, y, z, c, p,
+          dimple.plot[layer.type],
+          dimple.aggregateMethod.avg,
+          dimple.plot[layer.type].stacked
+        );
         
         //as of v1.1.4 dimple can use different dataset for each series
         // facets not currently working with layer data; need to change structure
@@ -258,7 +280,7 @@ HTMLWidgets.widget({
         Object.keys(axisopts).filter(function(oky){
           return [
             "measure","type","orderRule","grouporderRule",
-            "outputFormat","inputFormat"
+            "outputFormat","inputFormat","useAxis"
           ].indexOf(oky) < 0
         }).forEach(function(oky){
           axis[oky] = axisopts[oky]

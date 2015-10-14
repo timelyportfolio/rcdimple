@@ -47,7 +47,26 @@ mtcars %>%
   add_series(x = "cyl", y = "mpg", type = "line", yAxis = list(hidden=FALSE) ) %>%
   # hidden = FALSE so we can compare
   add_series(x = "cyl", y = "mpg", groups = "name", type = "bubble") %>%
-  add_series(x = "cyl", y = "mpg", groups = "cyl", type = "bubble")  
+  add_series(x = "cyl", y = "mpg", groups = "cyl", type = "bubble") 
+
+# try to use specify axis
+mtcars %>%
+  dimple(mpg ~ cyl, type = "bar", groups = "cyl") %>%
+  # give the y axis a name if we plan to reuse
+  yAxis(name = "y1") %>%
+  add_series(
+    x = "cyl", y = "mpg", type = "line",
+    yAxis = list(useAxis = "y1")
+  ) %>%
+  # hidden = FALSE so we can compare
+  add_series(
+    x = "cyl", y = "mpg", groups = "name", type = "bubble",
+    yAxis = list(useAxis = "y1")
+  ) %>%
+  add_series(
+    x = "cyl", y = "mpg", groups = "cyl", type = "bubble",
+    yAxis = list(useAxis = "y1")
+  ) 
 
 # try it with facets
 mtcars %>%
